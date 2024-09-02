@@ -7,6 +7,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        //todo: 경로 설정
         additionalData: `@import '/src/styles/index.scss';`,
       },
     },
