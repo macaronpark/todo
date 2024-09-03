@@ -1,24 +1,4 @@
 .wrapper {
   display: flex;
   height: 100vh;
-
-  .lsb {
-    width: 200px;
-    min-width: 200px;
-    background-color: red;
-    padding: 20px;
-  }
-
-  .content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #ffffff;
-  }
-
-  .rsb {
-    width: 300px;
-    min-width: 300px;
-    background-color: blue;
-    padding: 20px;
-  }
 }
