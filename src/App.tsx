@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './App.module.scss';
-import { CategorySideBar, TaskDetail, TaskList } from './ui';
+import { CategorySideBar, Task, TaskDetail, TaskList } from './ui';
 
 function App() {
   const [isSidebarVisible, setSidebarVisible] = useState(true);
@@ -12,7 +12,10 @@ function App() {
   return (
     <div className={styles.wrapper}>
       <CategorySideBar />
-      <TaskList onClick={toggleSidebar} />
+      <TaskList>
+        <Task onClick={toggleSidebar} />
+        <Task onClick={toggleSidebar} />
+      </TaskList>
       {isSidebarVisible && <TaskDetail />}
     </div>
   );

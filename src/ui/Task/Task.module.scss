@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: gray;
+  }
+}
