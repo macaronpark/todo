@@ -1,4 +1,4 @@
-import type { TCategory, TNewCatergory } from '../entities/category';
+import type { TCategory, TNewCatergory } from '@entities/category';
 import { EStoreName, ETransactionMode, initDB } from './helper';
 
 export const getCategoryList = async (): Promise<IDBRequest<TCategory>[]> => {
