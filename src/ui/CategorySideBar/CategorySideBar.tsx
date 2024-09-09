@@ -1,4 +1,4 @@
-import { addCategory } from '../../db/category';
+import { addCategory } from '@db/category';
 import styles from './CategorySideBar.module.scss';
 
 const CategorySideBar = () => {

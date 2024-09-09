@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './App.module.scss';
-import { CategorySideBar, Task, TaskDetail, TaskList } from './ui';
+import { CategorySideBar, Task, TaskDetail, TaskList } from '@ui';
 
 function App() {
   const [isSidebarVisible, setSidebarVisible] = useState(true);
