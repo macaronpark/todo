@@ -1,5 +1,6 @@
-import { addCategory } from '@db/category';
+import { addCategory, getCategoryList } from '@features/category/model';
 import styles from './CategorySidebar.module.scss';
+import { useCallback, useEffect, useState } from 'react';
 import { TCategory } from '@entities/category';
 import CategoryItem from '../CategoryItem';
 import CategoryList from '../CategoryList';
@@ -7,15 +8,20 @@ import CategoryList from '../CategoryList';
 const CategorySidebar = () => {
   const [categoryList, setCategoryList] = useState<TCategory[]>([]);
 
+  const query = useCallback(async () => {
     try {
-      const response = await addCategory(newCategory);
-      // todo: 카테고리 추가 성공
-      console.log(response);
+      const categoryList = await getCategoryList();
+      setCategoryList(categoryList ?? []);
     } catch (error) {
-      // todo: 카테고리 추가 실패
-      console.log(error);
+      if (error instanceof Error) {
+        window.alert(error.message);
+      }
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    query();
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -28,6 +34,10 @@ const CategorySidebar = () => {
           />
         ))}
       </CategoryList>
+
+      <button onClick={() => addCategory({ onSuccess: query })}>
+        + 카테고리
+      </button>
     </div>
   );
 };

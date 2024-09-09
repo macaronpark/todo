@@ -1,7 +1,7 @@
 import type { TCategory, TNewCatergory } from '@entities/category';
 import { EStoreName, ETransactionMode, initDB } from './helper';
 
-export const getCategoryList = async (): Promise<IDBRequest<TCategory>[]> => {
+export const getCategoryList = async (): Promise<TCategory[]> => {
   const db = await initDB({
     storeName: EStoreName.categoryList,
     transactionMode: ETransactionMode.readonly,
