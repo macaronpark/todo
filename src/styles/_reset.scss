@@ -72,9 +72,8 @@ picture {
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* Inherit fonts for inputs */
 input,
-button,
 textarea,
 select {
   font-family: inherit;
@@ -91,4 +90,10 @@ textarea {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
 }

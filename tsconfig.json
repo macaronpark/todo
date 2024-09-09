@@ -5,9 +5,8 @@
     "paths": {
       "@db/*": ["src/db/*"],
       "@entities/*": ["src/entities/*"],
-      "@styles/*": ["src/styles/*"],
-      "@ui/*": ["src/ui/*"],
-      "@ui": ["src/ui"]
+      "@features/*": ["src/features/*"],
+      "@styles/*": ["src/styles/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

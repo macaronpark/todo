@@ -1,0 +1,19 @@
+.wrapper {
+  @include flex(space-between, center, column);
+  width: 240px;
+  min-width: 240px;
+  background-color: $white;
+  border-right: 1px solid $black;
+
+  & > button {
+    @include flex(flex-start);
+    width: 100%;
+    border-top: 1px solid $black;
+    background-color: $white;
+    padding: 16px 24px;
+
+    &:hover {
+      background-color: $lightgray;
+    }
+  }
+}
