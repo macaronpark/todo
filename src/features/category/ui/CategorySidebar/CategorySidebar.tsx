@@ -1,7 +1,7 @@
 import { addCategory } from '@db/category';
-import styles from './CategorySideBar.module.scss';
+import styles from './CategorySidebar.module.scss';
 
-const CategorySideBar = () => {
+const CategorySidebar = () => {
   const handleAddCategory = async () => {
     const newCategory = { title: '제목없는 카테고리' };
 
@@ -23,4 +23,4 @@ const CategorySideBar = () => {
   );
 };
 
-export default CategorySideBar;
+export default CategorySidebar;
