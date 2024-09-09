@@ -6,9 +6,7 @@
       "@db/*": ["src/db/*"],
       "@entities/*": ["src/entities/*"],
       "@features/*": ["src/features/*"],
-      "@styles/*": ["src/styles/*"],
-      "@ui/*": ["src/ui/*"],
-      "@ui": ["src/ui"]
+      "@styles/*": ["src/styles/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
