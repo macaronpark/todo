@@ -1,9 +1,11 @@
 import { addCategory } from '@db/category';
 import styles from './CategorySidebar.module.scss';
+import { TCategory } from '@entities/category';
+import CategoryItem from '../CategoryItem';
+import CategoryList from '../CategoryList';
 
 const CategorySidebar = () => {
-  const handleAddCategory = async () => {
-    const newCategory = { title: '제목없는 카테고리' };
+  const [categoryList, setCategoryList] = useState<TCategory[]>([]);
 
     try {
       const response = await addCategory(newCategory);
@@ -17,8 +19,15 @@ const CategorySidebar = () => {
 
   return (
     <div className={styles.wrapper}>
-      <p>lsb</p>
-      <button onClick={handleAddCategory}>+ 카테고리</button>
+      <CategoryList>
+        {categoryList.map((category) => (
+          <CategoryItem
+            key={category.id}
+            id={category.id}
+            title={category.title}
+          />
+        ))}
+      </CategoryList>
     </div>
   );
 };
