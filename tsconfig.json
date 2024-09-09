@@ -5,6 +5,7 @@
     "paths": {
       "@db/*": ["src/db/*"],
       "@entities/*": ["src/entities/*"],
+      "@features/*": ["src/features/*"],
       "@styles/*": ["src/styles/*"],
       "@ui/*": ["src/ui/*"],
       "@ui": ["src/ui"]
