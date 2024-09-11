@@ -17,11 +17,15 @@
 3. 의존성 설치: `pnpm install`
 4. 개발 서버 실행: `pnpm dev`
 
+### 개발 기록
+
+[macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls) 참고
+
 <br />
 
 ## 폴더 구조
 
-- 📂 `devlog`: 개발 기록
-  - 📄 `유저스토리와 기획.md`
-  - 📄 `프로젝트 초기 설정.md`
+- 📂 `devlog`: 학습 기록
 - 📂 `src`
+  - 📂 `entities`
+  - 📂 `features`
