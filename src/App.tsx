@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import type { TCategory } from '@entities/category';
+import { Sidebar } from '@features/category/ui';
+import { TaskSection } from '@features/task/ui';
 import styles from './App.module.scss';
-import { CategorySidebar } from '@features/category/ui';
-import { Task, TaskDetail, TaskList } from '@features/task/ui';
 
 function App() {
-  const [isSidebarVisible, setSidebarVisible] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<TCategory | null>(
+    null
+  );
 
-  const toggleSidebar = () => {
-    setSidebarVisible(!isSidebarVisible);
-  };
+  const handleCategorySelect = useCallback(
+    (category: TCategory) => {
+      setSelectedCategory(category);
+    },
+    [setSelectedCategory]
+  );
 
   return (
     <div className={styles.wrapper}>
-      <CategorySidebar />
-      <TaskList>
-        <Task onClick={toggleSidebar} />
-        <Task onClick={toggleSidebar} />
-      </TaskList>
-      {isSidebarVisible && <TaskDetail />}
+      <Sidebar
+        selectedCategoryId={selectedCategory?.id}
+        onCategorySelect={handleCategorySelect}
+      />
+      <TaskSection
+        categoryId={selectedCategory?.id}
+        categoryTitle={selectedCategory?.title}
+      />
     </div>
   );
 }

@@ -5,7 +5,15 @@
   background-color: $white;
   border-right: 1px solid $black;
 
-  & > button {
+  .listWrapper {
+    @include flex(flex-start, center, column);
+    width: 100%;
+    gap: 8px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .addCategoryButton {
     @include flex(flex-start);
     width: 100%;
     border-top: 1px solid $black;

@@ -1,2 +1,2 @@
-export { default as CategorySidebar } from './CategorySidebar';
+export { default as Sidebar } from './Sidebar';
 export { default as CategoryItem } from './CategoryItem';
