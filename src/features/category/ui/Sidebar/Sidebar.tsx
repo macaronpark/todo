@@ -12,32 +12,55 @@ type TProps = {
 const Sidebar = ({ selectedCategoryId, onCategorySelect }: TProps) => {
   const [categoryList, setCategoryList] = useState<TCategory[]>([]);
 
-  const queryCategoryList = useCallback(async () => {
-    try {
-      const categoryList = await getCategoryList();
-      setCategoryList(categoryList ?? []);
+  const queryCategoryList = useCallback(
+    async ({
+      onSuccess,
+    }: {
+      onSuccess: ({ categoryList }: { categoryList: TCategory[] }) => void;
+    }) => {
+      try {
+        const categoryList = await getCategoryList();
+        setCategoryList(categoryList ?? []);
 
-      if (categoryList.length > 0) {
-        const newTargetCategory = categoryList[0];
-
-        onCategorySelect({
-          id: newTargetCategory.id,
-          title: newTargetCategory.title,
-        });
+        onSuccess({ categoryList });
+      } catch (error) {
+        if (error instanceof Error) {
+          window.alert(error.message);
+        }
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        window.alert(error.message);
-      }
-    }
-  }, []);
+    },
+    []
+  );
 
   useEffect(() => {
-    queryCategoryList();
+    queryCategoryList({
+      onSuccess: ({ categoryList }) => {
+        if (categoryList.length > 0) {
+          const targetCategory = categoryList[0];
+
+          onCategorySelect({
+            id: targetCategory.id,
+            title: targetCategory.title,
+          });
+        }
+      },
+    });
   }, []);
 
   const handleAddCategoryButtonClick = () => {
-    addCategory({ onSuccess: queryCategoryList });
+    addCategory({
+      onSuccess: () =>
+        queryCategoryList({
+          onSuccess: ({ categoryList }) => {
+            const newCategory = categoryList[categoryList.length - 1];
+
+            onCategorySelect({
+              id: newCategory.id,
+              title: newCategory.title,
+            });
+          },
+        }),
+    });
   };
 
   return (
