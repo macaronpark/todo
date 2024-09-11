@@ -8,4 +8,8 @@
   &:hover {
     background-color: $lightgray;
   }
+
+  &.selected {
+    background-color: yellow;
+  }
 }
