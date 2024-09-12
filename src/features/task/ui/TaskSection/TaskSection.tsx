@@ -36,11 +36,14 @@ const TaskSection = ({ categoryId, categoryTitle }: TProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.listWrapper} onClick={toggleSidebar}>
-        <h3 className={styles.title}>
-          {categoryId ? `${categoryTitle} (#${categoryId})` : '-'}
-        </h3>
-        <div className={styles.list}>
+      <div className={styles.listWrapper}>
+        <div className={styles.header}>
+          <h3 className={styles.title}>
+            {categoryId ? `${categoryTitle} (#${categoryId})` : '-'}
+          </h3>
+          <button className={styles.deleteCategoryButton}>삭제</button>
+        </div>
+        <div className={styles.list} onClick={toggleSidebar}>
           {taskList.map((task) => (
             <Task key={task.id} title={task.title} onClick={toggleSidebar} />
           ))}

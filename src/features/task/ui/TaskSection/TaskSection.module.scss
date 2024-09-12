@@ -7,12 +7,27 @@
     flex: 1;
     background-color: $white;
 
-    .title {
-      @include flex(start);
-      height: 60px;
+    .header {
+      @include flex(space-between, center);
+      border-bottom: 1px solid $black;
       padding: 0 40px;
-      font-size: 20px;
-      font-weight: 700;
+
+      .title {
+        @include flex(start);
+        height: 60px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .deleteCategoryButton {
+        font-size: 14px;
+        font-weight: 600;
+        color: $gray;
+
+        &:hover {
+          color: $black;
+        }
+      }
     }
 
     .list {
