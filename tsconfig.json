@@ -3,10 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@db/*": ["src/db/*"],
+      "@app": ["src/app"],
+      "@app/*": ["src/app/*"],
+      "@db/*": ["src/app/db/*"],
       "@entities/*": ["src/entities/*"],
       "@features/*": ["src/features/*"],
-      "@styles/*": ["src/styles/*"]
+      "@pages": ["src/pages"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

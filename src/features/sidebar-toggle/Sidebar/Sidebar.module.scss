@@ -1,0 +1,7 @@
+.wrapper {
+  @include flex(space-between, center, column);
+  width: 240px;
+  min-width: 240px;
+  background-color: $white;
+  border-right: 1px solid $black;
+}

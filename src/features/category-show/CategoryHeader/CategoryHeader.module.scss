@@ -1,0 +1,12 @@
+.wrapper {
+  @include flex(space-between, center);
+  border-bottom: 1px solid $black;
+  padding: 0 40px;
+
+  .title {
+    @include flex(start);
+    height: 60px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
