@@ -32,10 +32,14 @@ const openDB = (): Promise<IDBDatabase> => {
 
       Object.values(EStoreName).forEach((storeName) => {
         if (!db.objectStoreNames.contains(storeName)) {
-          db.createObjectStore(storeName, {
+          const store = db.createObjectStore(storeName, {
             keyPath: 'id',
             autoIncrement: true,
           });
+
+          if (storeName === EStoreName.taskList) {
+            store.createIndex('categoryId', 'categoryId', { unique: false });
+          }
         }
       });
     };

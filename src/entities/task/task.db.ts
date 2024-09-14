@@ -10,14 +10,15 @@ export const getTaskListFromDB = async (
   });
 
   return new Promise((resolve, reject) => {
-    const request = db.get(categoryId);
+    const request = db.index('categoryId');
+    const query = request.getAll(categoryId);
 
-    request.onsuccess = () => {
-      resolve(request.result);
+    query.onsuccess = () => {
+      resolve(query.result ?? []);
     };
 
-    request.onerror = () => {
-      reject(request.error);
+    query.onerror = () => {
+      reject(query.error);
     };
   });
 };
