@@ -1,4 +1,4 @@
-import styles from './CategoryHeader.module.scss';
+import styles from './category-header-show.module.scss';
 import { ReactNode } from 'react';
 
 type TProps = {

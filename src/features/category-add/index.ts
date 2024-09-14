@@ -1,2 +1,2 @@
-export { default as AddCategoryButton } from './AddCategoryButton';
-export { default as addCategory } from './addCategory';
+export { default as CategoryAddButton } from './category-add.ui';
+export { default as addCategory } from './category-add.api';

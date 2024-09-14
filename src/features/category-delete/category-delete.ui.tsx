@@ -1,4 +1,4 @@
-import styles from './DeleteCategoryButton.module.scss';
+import styles from './category-delete.module.scss';
 
 type TProps = {
   onClick: () => void;

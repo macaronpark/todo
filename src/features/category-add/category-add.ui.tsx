@@ -1,5 +1,5 @@
 import { useCategoryContext } from '@app/providers/CategoryProvider';
-import styles from './AddCategoryButton.module.scss';
+import styles from './category-add.module.scss';
 
 const CategoryAddButton = () => {
   const { handleAddCategory } = useCategoryContext();

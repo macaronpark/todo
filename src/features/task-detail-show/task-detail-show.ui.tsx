@@ -1,4 +1,4 @@
-import styles from './TaskDetail.module.scss';
+import styles from './task-detail-show.module.scss';
 
 const TaskDetail = () => {
   return (

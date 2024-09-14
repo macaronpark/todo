@@ -1,4 +1,4 @@
-import styles from './CategoryList.module.scss';
+import styles from './category-list-show.module.scss';
 import { Category } from '@entities/category';
 import { useCategoryContext } from '@app/providers/CategoryProvider';
 

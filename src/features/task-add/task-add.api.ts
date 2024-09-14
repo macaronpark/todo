@@ -1,5 +1,4 @@
-import { addTask as addTaskToDB } from '@db/task';
-import { TNewTask } from '@entities/task';
+import { type TNewTask, addTaskToDB } from '@entities/task';
 
 const addTask = async ({
   newTask,
