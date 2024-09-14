@@ -38,9 +38,13 @@ const TaskSection = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.listWrapper}>
-        <CategoryHeader id={category?.id} title={category?.title}>
+        <CategoryHeader
+          categoryId={category?.id}
+          categoryTitle={category?.title}
+        >
           <CategoryDeleteButton
-            onClick={() => handleDeleteCategory(category?.id)}
+            categoryId={category?.id}
+            onClick={handleDeleteCategory}
           />
         </CategoryHeader>
         <div className={styles.list} onClick={handleToggle}>

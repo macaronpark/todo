@@ -2,12 +2,16 @@ import styles from './category-header-show.module.scss';
 import { ReactNode } from 'react';
 
 type TProps = {
-  id?: string;
-  title?: string;
+  categoryId?: string;
+  categoryTitle?: string;
   children: ReactNode | ReactNode[];
 };
 
-const CategoryHeader = ({ id, title, children }: TProps) => {
+const CategoryHeader = ({
+  categoryId: id,
+  categoryTitle: title,
+  children,
+}: TProps) => {
   const categoryTitle = id ? `${title} (#${id})` : '-';
 
   return (
