@@ -1,24 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
-import { type TTask, Task } from '@entities/task';
-import { getTaskList } from '@features/task-list-show';
-import { useCategoryContext } from '@app/providers/CategoryProvider';
-import { CategoryDeleteButton } from '@features/category-delete';
+
 import { CategoryHeader } from '@features/category-header-show';
-import { useToggleTaskDetail, TaskDetail } from '@features/task-detail-show';
+import { CategoryDeleteButton } from '@features/category-delete';
+import { TaskList, getTaskList } from '@features/task-list-show';
+import { TaskDetail, useToggleTaskDetail } from '@features/task-detail-show';
+
+import { useCategoryContext } from '@entities/category';
+import { type TTask, Task } from '@entities/task';
+
 import styles from './task-section.module.scss';
 
 const TaskSection = () => {
+  const { selectedCategory, handleDeleteCategory } = useCategoryContext();
   const { isVisible, handleToggle } = useToggleTaskDetail();
-
-  const { selectedCategory: category, handleDeleteCategory } =
-    useCategoryContext();
 
   const [taskList, setTaskList] = useState<TTask[]>([]);
 
   const handleGetTaskList = useCallback(async () => {
     try {
       await getTaskList({
-        categoryId: category?.id,
+        categoryId: selectedCategory?.id,
         onSuccess: (taskList) => {
           setTaskList(taskList ?? []);
         },
@@ -28,31 +29,32 @@ const TaskSection = () => {
         window.alert(error.message);
       }
     }
-  }, [category?.id]);
+  }, [selectedCategory?.id]);
 
   useEffect(() => {
-    if (!category?.id) return;
+    if (!selectedCategory?.id) return;
+
     handleGetTaskList();
-  }, [category?.id]);
+  }, [selectedCategory?.id]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.listWrapper}>
         <CategoryHeader
-          categoryId={category?.id}
-          categoryTitle={category?.title}
+          categoryId={selectedCategory?.id}
+          categoryTitle={selectedCategory?.title}
         >
           <CategoryDeleteButton
-            categoryId={category?.id}
+            categoryId={selectedCategory?.id}
             onClick={handleDeleteCategory}
           />
         </CategoryHeader>
-        <div className={styles.list} onClick={handleToggle}>
+        <TaskList>
           {taskList.map((task) => (
             <Task key={task.id} title={task.title} onClick={handleToggle} />
           ))}
           task 영역
-        </div>
+        </TaskList>
       </div>
       {isVisible && <TaskDetail />}
     </div>

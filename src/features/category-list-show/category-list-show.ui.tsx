@@ -1,6 +1,6 @@
+import { Category, useCategoryContext } from '@entities/category';
+
 import styles from './category-list-show.module.scss';
-import { Category } from '@entities/category';
-import { useCategoryContext } from '@app/providers/CategoryProvider';
 
 const CategoryList = () => {
   const { categoryList, selectedCategory, handleSelectCategory } =

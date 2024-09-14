@@ -1,4 +1,5 @@
-import { useCategoryContext } from '@app/providers/CategoryProvider';
+import { useCategoryContext } from '@entities/category';
+
 import styles from './category-add.module.scss';
 
 const CategoryAddButton = () => {
