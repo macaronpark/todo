@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 import { type TTask, Task } from '@entities/task';
 import { getTaskList } from '@features/task-show';
-import styles from './TaskSection.module.scss';
-import TaskDetail from '../TaskDetail';
+import TaskDetail from '@features/task-show/TaskDetail';
 import { useCategoryContext } from '@app/providers/CategoryProvider';
 import { CategoryHeader } from '@features/category-show';
 import { DeleteCategoryButton } from '@features/category-delete';
-import { useToggleSidebar } from '@features/sidebar-toggle';
+import useToggleTaskDetail from '@features/task-show/task-detail.hook';
+import styles from './task-section.module.scss';
 
 const TaskSection = () => {
-  const { isSidebarVisible, toggleSidebar } = useToggleSidebar();
+  const { isVisible, handleToggle } = useToggleTaskDetail();
 
   const { selectedCategory: category, handleDeleteCategory } =
     useCategoryContext();
@@ -44,14 +44,14 @@ const TaskSection = () => {
             onClick={() => handleDeleteCategory(category?.id)}
           />
         </CategoryHeader>
-        <div className={styles.list} onClick={toggleSidebar}>
+        <div className={styles.list} onClick={handleToggle}>
           {taskList.map((task) => (
-            <Task key={task.id} title={task.title} onClick={toggleSidebar} />
+            <Task key={task.id} title={task.title} onClick={handleToggle} />
           ))}
           task 영역
         </div>
       </div>
-      {isSidebarVisible && <TaskDetail />}
+      {isVisible && <TaskDetail />}
     </div>
   );
 };

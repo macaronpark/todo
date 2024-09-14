@@ -1,16 +1,11 @@
-import { AddCategoryButton } from '@features/category-add';
-import { CategoryList } from '@features/category-show';
-import { TaskSection } from '@features/task-show';
-import { Sidebar } from '@features/sidebar-toggle';
+import { Sidebar } from '@widgets/sidebar';
+import { TaskSection } from '@widgets/task-section';
 import styles from './MainPage.module.scss';
 
 const MainPage = () => {
   return (
     <div className={styles.wrapper}>
-      <Sidebar>
-        <CategoryList />
-        <AddCategoryButton />
-      </Sidebar>
+      <Sidebar />
       <TaskSection />
     </div>
   );
