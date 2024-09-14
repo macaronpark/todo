@@ -13,9 +13,8 @@
 ### 설치 방법
 
 1. 레포지토리 클론: `git@github.com:macaronpark/todo.git`
-2. corepack 허용: `corepack enable`
-3. 의존성 설치: `pnpm install`
-4. 개발 서버 실행: `pnpm dev`
+2. 의존성 설치: `pnpm install`
+3. 개발 서버 실행: `pnpm dev`
 
 ### 개발 기록
 
@@ -27,7 +26,18 @@
 
 - 📂 `devlog`: 학습 기록
 - 📂 `src`
-  - 📂 `app`: 전역 스타일, 프로바이더, index.tsx 등 앱 실행 전반에 필요한 코드
-  - 📂 `entities`: 엔티티 (카테고리, 태스크)
-  - 📂 `features`: 기능 단위의 컴포넌트와 로직
+  - 📂 `app`
+    - 📄 `index.tsx`: 앱 진입점
+    - ...
   - 📂 `pages`: 화면
+  - 📂 `widgets`: 화면 구성 인터페이스
+  - 📂 `features`: 비즈니스 액션
+  - 📂 `entities`: 데이터 엔티티
+  - 📂 `shared`: 앱 전반에서 사용하는 리소스
+
+<br />
+
+> 참고
+>
+> - https://feature-sliced.design/
+> - [macaronpark/todo/devlog/05.feature-sliced-design.md](/devlog/05.feature-sliced-design.md)
