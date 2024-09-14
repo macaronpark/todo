@@ -1,6 +1,6 @@
 import { Sidebar } from '@widgets/sidebar';
 import { TaskSection } from '@widgets/task-section';
-import styles from './MainPage.module.scss';
+import styles from './main.module.scss';
 
 const MainPage = () => {
   return (
