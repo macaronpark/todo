@@ -1,5 +1,6 @@
 .wrapper {
   @include flex(flex-start, center, column);
+  gap: 4px;
   width: 100%;
   padding: 10px;
   overflow-y: auto;

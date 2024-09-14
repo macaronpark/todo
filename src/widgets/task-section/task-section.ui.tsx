@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CategoryHeader } from '@features/category-header-show';
 import { CategoryDeleteButton } from '@features/category-delete';
@@ -17,20 +17,18 @@ const TaskSection = () => {
 
   const [taskList, setTaskList] = useState<TTask[]>([]);
 
-  const handleGetTaskList = useCallback(async () => {
+  const handleGetTaskList = async () => {
     try {
       await getTaskList({
         categoryId: selectedCategory?.id,
-        onSuccess: (taskList) => {
-          setTaskList(taskList ?? []);
-        },
+        onSuccess: (taskList) => setTaskList(taskList),
       });
     } catch (error) {
       if (error instanceof Error) {
         window.alert(error.message);
       }
     }
-  }, [selectedCategory?.id]);
+  };
 
   useEffect(() => {
     if (!selectedCategory?.id) return;
@@ -54,7 +52,6 @@ const TaskSection = () => {
           {taskList.map((task) => (
             <Task key={task.id} title={task.title} onClick={handleToggle} />
           ))}
-          task 영역
         </TaskList>
         <TaskAddInputBar />
       </div>
