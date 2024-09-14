@@ -1,7 +1,9 @@
+import { EStoreName, ETransactionMode, initDB } from '@shared/db';
 import type { TNewTask, TTask } from '@entities/task';
-import { EStoreName, ETransactionMode, initDB } from './helper';
 
-export const getTaskList = async (categoryId: string): Promise<TTask[]> => {
+export const getTaskListFromDB = async (
+  categoryId: string
+): Promise<TTask[]> => {
   const db = await initDB({
     storeName: EStoreName.taskList,
     transactionMode: ETransactionMode.readonly,
@@ -20,17 +22,17 @@ export const getTaskList = async (categoryId: string): Promise<TTask[]> => {
   });
 };
 
-export const addTask = async (newTask: TNewTask) => {
+export const addTaskToDB = async (newTask: TNewTask) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.add(newTask);
 };
 
-export const updateTask = async (task: TTask) => {
+export const updateTaskToDB = async (task: TTask) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.put(task);
 };
 
-export const deleteTask = async (categoryId: string) => {
+export const deleteTaskFromDB = async (categoryId: string) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.delete(categoryId);
 };

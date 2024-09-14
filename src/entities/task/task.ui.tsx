@@ -1,4 +1,4 @@
-import styles from './Task.module.scss';
+import styles from './task.module.scss';
 
 type TProps = {
   title: string;

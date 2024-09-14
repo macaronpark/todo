@@ -1,5 +1,5 @@
 import type { TCategory, TNewCatergory } from './category.type';
-import { EStoreName, ETransactionMode, initDB } from '@app/db/helper';
+import { EStoreName, ETransactionMode, initDB } from '@shared/db';
 
 export const getCategoryListFromDB = async (): Promise<TCategory[]> => {
   const db = await initDB({

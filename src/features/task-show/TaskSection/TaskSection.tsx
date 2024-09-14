@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { TTask } from '@entities/task';
+import { type TTask, Task } from '@entities/task';
 import { getTaskList } from '@features/task-show';
 import styles from './TaskSection.module.scss';
 import TaskDetail from '../TaskDetail';
-import Task from '../Task';
 import { useCategoryContext } from '@app/providers/CategoryProvider';
 import { CategoryHeader } from '@features/category-show';
 import { DeleteCategoryButton } from '@features/category-delete';

@@ -1,5 +1,4 @@
-import { getTaskList as getTaskListFromDB } from '@app/db/task';
-import type { TTask } from '@entities/task';
+import { type TTask, getTaskListFromDB } from '@entities/task';
 
 type TArgs = {
   categoryId?: string;
