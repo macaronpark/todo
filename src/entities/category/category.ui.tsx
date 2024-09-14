@@ -1,12 +1,12 @@
-import type { TCategory } from '@entities/category';
-import styles from './CategoryItem.module.scss';
+import type { TCategory } from './category.type';
+import styles from './category.module.scss';
 
 type TProps = TCategory & {
   isSelected: boolean;
   onClick: () => void;
 };
 
-const CategoryItem = ({ id, title, isSelected, onClick }: TProps) => {
+const Category = ({ id, title, isSelected, onClick }: TProps) => {
   return (
     <button
       className={`${styles.wrapper} ${isSelected ? styles.selected : ''}`}
@@ -15,4 +15,4 @@ const CategoryItem = ({ id, title, isSelected, onClick }: TProps) => {
   );
 };
 
-export default CategoryItem;
+export default Category;

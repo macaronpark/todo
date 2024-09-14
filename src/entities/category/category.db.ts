@@ -1,7 +1,7 @@
-import type { TCategory, TNewCatergory } from '@entities/category';
-import { EStoreName, ETransactionMode, initDB } from './helper';
+import type { TCategory, TNewCatergory } from './category.type';
+import { EStoreName, ETransactionMode, initDB } from '@app/db/helper';
 
-export const getCategoryList = async (): Promise<TCategory[]> => {
+export const getCategoryListFromDB = async (): Promise<TCategory[]> => {
   const db = await initDB({
     storeName: EStoreName.categoryList,
     transactionMode: ETransactionMode.readonly,
@@ -20,17 +20,17 @@ export const getCategoryList = async (): Promise<TCategory[]> => {
   });
 };
 
-export const addCategory = async (newCategory: TNewCatergory) => {
+export const addCategoryToDB = async (newCategory: TNewCatergory) => {
   const db = await initDB({ storeName: EStoreName.categoryList });
   return db.add(newCategory);
 };
 
-export const updateCategory = async (category: TCategory) => {
+export const updateCategoryToDB = async (category: TCategory) => {
   const db = await initDB({ storeName: EStoreName.categoryList });
   return db.put(category);
 };
 
-export const deleteCategory = async (categoryId: string) => {
+export const deleteCategoryFromDB = async (categoryId: string) => {
   const db = await initDB({ storeName: EStoreName.categoryList });
   return db.delete(categoryId);
 };

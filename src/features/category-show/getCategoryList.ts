@@ -1,5 +1,4 @@
-import { getCategoryList as getCategoryListFromDB } from '@app/db/category';
-import type { TCategory } from '@entities/category';
+import { type TCategory, getCategoryListFromDB } from '@entities/category';
 
 type TArgs = {
   onSuccess: (categoryList: TCategory[]) => void;

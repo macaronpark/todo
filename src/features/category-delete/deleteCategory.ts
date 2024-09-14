@@ -1,4 +1,4 @@
-import { deleteCategory as deleteCategoryFromDB } from '@db/category';
+import { deleteCategoryFromDB } from '@entities/category';
 
 type TArgs = {
   id?: string;

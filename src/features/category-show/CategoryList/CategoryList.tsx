@@ -1,5 +1,5 @@
 import styles from './CategoryList.module.scss';
-import CategoryItem from '../CategoryItem';
+import { Category } from '@entities/category';
 import { useCategoryContext } from '@app/providers/CategoryProvider';
 
 const CategoryList = () => {
@@ -9,7 +9,7 @@ const CategoryList = () => {
   return (
     <div className={styles.wrapper}>
       {categoryList.map((category) => (
-        <CategoryItem
+        <Category
           key={category.id}
           id={category.id}
           title={category.title}

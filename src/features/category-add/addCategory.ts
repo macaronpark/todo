@@ -1,4 +1,4 @@
-import { addCategory as addCategoryToDB } from '@db/category';
+import { addCategoryToDB } from '@entities/category';
 
 const addCategory = async ({ onSuccess }: { onSuccess?: () => void }) => {
   try {
