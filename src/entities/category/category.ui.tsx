@@ -11,7 +11,7 @@ const Category = ({ id, title, isSelected, onClick }: TProps) => {
     <button
       className={`${styles.wrapper} ${isSelected ? styles.selected : ''}`}
       onClick={onClick}
-    >{`${title} (#${id})`}</button>
+    >{`🟰 ${title}(#${id})`}</button>
   );
 };
 

@@ -16,7 +16,7 @@ const CategoryHeader = ({
 
   return (
     <div className={styles.wrapper}>
-      <h3 className={styles.title}>{categoryTitle}</h3>
+      <h1 className={styles.title}>{categoryTitle}</h1>
       {children}
     </div>
   );

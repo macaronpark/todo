@@ -7,7 +7,7 @@ const CategoryAddButton = () => {
 
   return (
     <button className={styles.addCategoryButton} onClick={handleAddCategory}>
-      + 카테고리 추가
+      ➕ 카테고리 추가
     </button>
   );
 };

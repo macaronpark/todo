@@ -4,6 +4,7 @@ import { CategoryHeader } from '@features/category-header-show';
 import { CategoryDeleteButton } from '@features/category-delete';
 import { TaskList, getTaskList } from '@features/task-list-show';
 import { TaskDetail, useToggleTaskDetail } from '@features/task-detail-show';
+import { TaskAddInputBar } from '@features/task-add';
 
 import { useCategoryContext } from '@entities/category';
 import { type TTask, Task } from '@entities/task';
@@ -55,6 +56,7 @@ const TaskSection = () => {
           ))}
           task 영역
         </TaskList>
+        <TaskAddInputBar />
       </div>
       {isVisible && <TaskDetail />}
     </div>
