@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { TCategory } from '@entities/category';
 import { addCategory } from '@features/category-add';
-import { getCategoryList } from '@features/category-show';
+import { getCategoryList } from '@features/category-list-show';
 import { deleteCategory } from '@features/category-delete';
 
 type TCategoryContext = {
