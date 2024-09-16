@@ -9,7 +9,7 @@ const useCategoryDelete = () => {
   const { categoryList, setCategoryList, setSelectedCategory } =
     useCategoryContext();
 
-  const deleteCategory = async (categoryId: string) => {
+  const deleteCategory = async (categoryId: number) => {
     if (!categoryId) return;
 
     try {
@@ -24,7 +24,7 @@ const useCategoryDelete = () => {
     }
   };
 
-  const handleSuccess = (categoryId: string) => {
+  const handleSuccess = (categoryId: number) => {
     const prevSelectedCategoryIdx = categoryList.findIndex(
       (category) => category.id === categoryId
     );

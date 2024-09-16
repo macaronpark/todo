@@ -2,7 +2,7 @@ import styles from './category-header-show.module.scss';
 import { ReactNode } from 'react';
 
 type TProps = {
-  categoryId?: string;
+  categoryId?: number;
   categoryTitle?: string;
   children: ReactNode | ReactNode[];
 };

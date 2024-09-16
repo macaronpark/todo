@@ -3,7 +3,7 @@ import { type TTask, getTaskListFromDB, useTaskContext } from '@entities/task';
 const useTaskListShow = () => {
   const { taskList, setTaskList } = useTaskContext();
 
-  const getTaskList = async (categoryId: string) => {
+  const getTaskList = async (categoryId: number) => {
     try {
       const taskList = await getTaskListFromDB(categoryId);
       handleSuccess(taskList);

@@ -34,7 +34,7 @@ export const addCategoryToDB = async (
     request.onsuccess = () => {
       const category = {
         ...newCategory,
-        id: String(request.result),
+        id: Number(request.result),
       };
 
       resolve(category);
@@ -51,7 +51,7 @@ export const updateCategoryToDB = async (category: TCategory) => {
   return db.put(category);
 };
 
-export const deleteCategoryFromDB = async (categoryId: string) => {
+export const deleteCategoryFromDB = async (categoryId: number) => {
   const db = await initDB({ storeName: EStoreName.categoryList });
   return db.delete(categoryId);
 };

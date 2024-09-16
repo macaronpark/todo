@@ -2,7 +2,7 @@ import { EStoreName, ETransactionMode, initDB } from '@shared/db';
 import type { TNewTask, TTask } from '@entities/task';
 
 export const getTaskListFromDB = async (
-  categoryId: string
+  categoryId: number
 ): Promise<TTask[]> => {
   const db = await initDB({
     storeName: EStoreName.taskList,
@@ -35,7 +35,7 @@ export const addTaskToDB = async (newTask: TNewTask): Promise<TTask> => {
     request.onsuccess = () => {
       const task = {
         ...newTask,
-        id: String(request.result),
+        id: request.result,
       };
 
       resolve(task);
@@ -52,7 +52,7 @@ export const updateTaskToDB = async (task: TTask) => {
   return db.put(task);
 };
 
-export const deleteTaskFromDB = async (categoryId: string) => {
+export const deleteTaskFromDB = async (categoryId: number) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.delete(categoryId);
 };
