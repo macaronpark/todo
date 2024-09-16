@@ -1,6 +1,6 @@
 export type TTask = {
-  categoryId: string;
-  id: string;
+  categoryId: number;
+  id: number;
   title: string;
   createdAt: string;
   expiredAt?: string;

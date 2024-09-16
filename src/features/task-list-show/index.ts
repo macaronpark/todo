@@ -1,1 +1,1 @@
-export { default as getTaskList } from './task-list-show.api';
+export { default as TaskList } from './task-list-show.ui';

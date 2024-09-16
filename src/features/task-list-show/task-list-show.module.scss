@@ -1,0 +1,7 @@
+.wrapper {
+  @include flex(start, stretch, column);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 16px 40px 0;
+}

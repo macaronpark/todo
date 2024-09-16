@@ -1,0 +1,37 @@
+$inputHeight: 48px;
+
+.wrapper {
+  @include flex();
+  padding: 8px 40px 40px;
+  background-color: $purple;
+
+  .inputWrapper {
+    @include flex(start);
+    width: 100%;
+    height: $inputHeight;
+    background-color: #ffffffb0;
+    border-radius: 8px;
+
+    &:focus-within {
+      background-color: #ffffff;
+    }
+
+    .icon {
+      @include flex();
+      width: $inputHeight;
+      height: $inputHeight;
+    }
+
+    & > input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      border-radius: inherit;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

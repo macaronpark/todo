@@ -20,9 +20,30 @@ export const getCategoryListFromDB = async (): Promise<TCategory[]> => {
   });
 };
 
-export const addCategoryToDB = async (newCategory: TNewCatergory) => {
-  const db = await initDB({ storeName: EStoreName.categoryList });
-  return db.add(newCategory);
+export const addCategoryToDB = async (
+  newCategory: TNewCatergory
+): Promise<TCategory> => {
+  const db = await initDB({
+    storeName: EStoreName.categoryList,
+    transactionMode: ETransactionMode.readwrite,
+  });
+
+  return new Promise((resolve, reject) => {
+    const request = db.add(newCategory);
+
+    request.onsuccess = () => {
+      const category = {
+        ...newCategory,
+        id: Number(request.result),
+      };
+
+      resolve(category);
+    };
+
+    request.onerror = () => {
+      reject(request.error);
+    };
+  });
 };
 
 export const updateCategoryToDB = async (category: TCategory) => {
@@ -30,7 +51,7 @@ export const updateCategoryToDB = async (category: TCategory) => {
   return db.put(category);
 };
 
-export const deleteCategoryFromDB = async (categoryId: string) => {
+export const deleteCategoryFromDB = async (categoryId: number) => {
   const db = await initDB({ storeName: EStoreName.categoryList });
   return db.delete(categoryId);
 };

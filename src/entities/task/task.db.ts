@@ -2,7 +2,7 @@ import { EStoreName, ETransactionMode, initDB } from '@shared/db';
 import type { TNewTask, TTask } from '@entities/task';
 
 export const getTaskListFromDB = async (
-  categoryId: string
+  categoryId: number
 ): Promise<TTask[]> => {
   const db = await initDB({
     storeName: EStoreName.taskList,
@@ -10,10 +10,35 @@ export const getTaskListFromDB = async (
   });
 
   return new Promise((resolve, reject) => {
-    const request = db.get(categoryId);
+    const request = db.index('categoryId');
+    const query = request.getAll(categoryId);
+
+    query.onsuccess = () => {
+      resolve(query.result ?? []);
+    };
+
+    query.onerror = () => {
+      reject(query.error);
+    };
+  });
+};
+
+export const addTaskToDB = async (newTask: TNewTask): Promise<TTask> => {
+  const db = await initDB({
+    storeName: EStoreName.taskList,
+    transactionMode: ETransactionMode.readwrite,
+  });
+
+  return new Promise((resolve, reject) => {
+    const request = db.add(newTask);
 
     request.onsuccess = () => {
-      resolve(request.result);
+      const task = {
+        ...newTask,
+        id: request.result,
+      };
+
+      resolve(task);
     };
 
     request.onerror = () => {
@@ -22,17 +47,12 @@ export const getTaskListFromDB = async (
   });
 };
 
-export const addTaskToDB = async (newTask: TNewTask) => {
-  const db = await initDB({ storeName: EStoreName.taskList });
-  return db.add(newTask);
-};
-
 export const updateTaskToDB = async (task: TTask) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.put(task);
 };
 
-export const deleteTaskFromDB = async (categoryId: string) => {
+export const deleteTaskFromDB = async (categoryId: number) => {
   const db = await initDB({ storeName: EStoreName.taskList });
   return db.delete(categoryId);
 };

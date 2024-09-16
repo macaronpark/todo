@@ -3,6 +3,6 @@ export type TNewCatergory = {
 };
 
 export type TCategory = {
-  id: string;
+  id: number;
   title: string;
 };

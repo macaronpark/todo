@@ -1,9 +1,10 @@
 .addCategoryButton {
   @include flex(flex-start);
-  width: 100%;
-  border-top: 1px solid $black;
+  width: calc(100% - 20px);
+  border-radius: 8px;
   background-color: $white;
-  padding: 16px 24px;
+  padding: 8px;
+  margin-bottom: 8px;
 
   &:hover {
     background-color: $lightgray;

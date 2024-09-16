@@ -1,1 +1,1 @@
-export { default as CategoryHeader } from './category-header-show';
+export { default as CategoryHeader } from './category-header-show.ui';

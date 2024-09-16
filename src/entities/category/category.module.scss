@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   padding: 8px;
-  border: 1px solid $black;
+  border-radius: 8px;
   background-color: $white;
   cursor: pointer;
 
@@ -10,6 +10,6 @@
   }
 
   &.selected {
-    background-color: yellow;
+    background-color: $lightgray;
   }
 }
