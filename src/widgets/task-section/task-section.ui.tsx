@@ -1,40 +1,15 @@
-import { useEffect, useState } from 'react';
-
 import { CategoryHeader } from '@features/category-header-show';
 import { CategoryDeleteButton } from '@features/category-delete';
-import { TaskList, getTaskList } from '@features/task-list-show';
-import { TaskDetail, useToggleTaskDetail } from '@features/task-detail-show';
+import { TaskList } from '@features/task-list-show';
 import { TaskAddInputBar } from '@features/task-add';
 
 import { useCategoryContext } from '@entities/category';
-import { type TTask, Task } from '@entities/task';
 
 import styles from './task-section.module.scss';
 
 const TaskSection = () => {
   const { selectedCategory } = useCategoryContext();
-  const { isVisible, handleToggle } = useToggleTaskDetail();
-
-  const [taskList, setTaskList] = useState<TTask[]>([]);
-
-  const handleGetTaskList = async () => {
-    try {
-      await getTaskList({
-        categoryId: selectedCategory?.id,
-        onSuccess: (taskList) => setTaskList(taskList),
-      });
-    } catch (error) {
-      if (error instanceof Error) {
-        window.alert(error.message);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (!selectedCategory?.id) return;
-
-    handleGetTaskList();
-  }, [selectedCategory?.id]);
+  // const { isVisible, handleToggle } = useToggleTaskDetail();
 
   return (
     <div className={styles.wrapper}>
@@ -45,14 +20,10 @@ const TaskSection = () => {
         >
           <CategoryDeleteButton categoryId={selectedCategory?.id} />
         </CategoryHeader>
-        <TaskList>
-          {taskList.map((task) => (
-            <Task key={task.id} title={task.title} onClick={handleToggle} />
-          ))}
-        </TaskList>
-        <TaskAddInputBar />
+        <TaskList categoryId={selectedCategory?.id} />
+        {selectedCategory && <TaskAddInputBar />}
       </div>
-      {isVisible && <TaskDetail />}
+      {/* {isVisible && <TaskDetail />} */}
     </div>
   );
 };

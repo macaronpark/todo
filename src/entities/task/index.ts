@@ -6,3 +6,4 @@ export {
   updateTaskToDB,
   deleteTaskFromDB,
 } from './task.db';
+export { useTaskContext, TaskProvider } from './task.context';

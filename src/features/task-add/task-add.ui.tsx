@@ -1,10 +1,11 @@
 import { useCategoryContext } from '@entities/category';
 
-import addTask from './task-add.api';
+import useTaskAdd from './task-add.hook';
 import styles from './task-add.module.scss';
 
 const TaskAddInputBar = () => {
   const { selectedCategory } = useCategoryContext();
+  const { addTask } = useTaskAdd();
 
   const handleInputKeyDown = async (
     e: React.KeyboardEvent<HTMLInputElement>
@@ -26,7 +27,7 @@ const TaskAddInputBar = () => {
           memo: undefined,
         };
 
-        await addTask({ newTask, onSuccess: () => {} });
+        await addTask({ newTask });
       } catch (error) {
         if (error instanceof Error) {
           window.alert(error.message);
@@ -36,8 +37,6 @@ const TaskAddInputBar = () => {
       input.value = '';
     }
   };
-
-  if (!selectedCategory) return null;
 
   return (
     <div className={styles.wrapper}>
