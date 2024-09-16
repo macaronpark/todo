@@ -14,14 +14,18 @@ const TaskSection = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.listWrapper}>
-        <CategoryHeader
-          categoryId={selectedCategory?.id}
-          categoryTitle={selectedCategory?.title}
-        >
-          <CategoryDeleteButton categoryId={selectedCategory?.id} />
-        </CategoryHeader>
-        <TaskList categoryId={selectedCategory?.id} />
-        {selectedCategory && <TaskAddInputBar />}
+        {selectedCategory && (
+          <>
+            <CategoryHeader
+              categoryId={selectedCategory?.id}
+              categoryTitle={selectedCategory?.title}
+            >
+              <CategoryDeleteButton categoryId={selectedCategory?.id} />
+            </CategoryHeader>
+            <TaskList categoryId={selectedCategory?.id} />
+            <TaskAddInputBar />
+          </>
+        )}
       </div>
       {/* {isVisible && <TaskDetail />} */}
     </div>
