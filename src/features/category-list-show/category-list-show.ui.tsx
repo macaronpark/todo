@@ -1,10 +1,20 @@
-import { Category, useCategoryContext } from '@entities/category';
+import { Category } from '@entities/category';
 
+import useCategoryListShow from './category-list-show.hook';
 import styles from './category-list-show.module.scss';
+import { useEffect } from 'react';
 
 const CategoryList = () => {
-  const { categoryList, selectedCategory, handleSelectCategory } =
-    useCategoryContext();
+  const {
+    categoryList,
+    selectedCategory,
+    setSelectedCategory,
+    getCategoryList,
+  } = useCategoryListShow();
+
+  useEffect(() => {
+    getCategoryList();
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -13,7 +23,7 @@ const CategoryList = () => {
           key={category.id}
           id={category.id}
           title={category.title}
-          onClick={() => handleSelectCategory(category)}
+          onClick={() => setSelectedCategory(category)}
           isSelected={selectedCategory?.id === category.id}
         />
       ))}

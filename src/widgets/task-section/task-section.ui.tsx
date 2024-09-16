@@ -12,7 +12,7 @@ import { type TTask, Task } from '@entities/task';
 import styles from './task-section.module.scss';
 
 const TaskSection = () => {
-  const { selectedCategory, handleDeleteCategory } = useCategoryContext();
+  const { selectedCategory } = useCategoryContext();
   const { isVisible, handleToggle } = useToggleTaskDetail();
 
   const [taskList, setTaskList] = useState<TTask[]>([]);
@@ -43,10 +43,7 @@ const TaskSection = () => {
           categoryId={selectedCategory?.id}
           categoryTitle={selectedCategory?.title}
         >
-          <CategoryDeleteButton
-            categoryId={selectedCategory?.id}
-            onClick={handleDeleteCategory}
-          />
+          <CategoryDeleteButton categoryId={selectedCategory?.id} />
         </CategoryHeader>
         <TaskList>
           {taskList.map((task) => (
