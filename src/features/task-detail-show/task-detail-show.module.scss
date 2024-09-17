@@ -1,7 +1,110 @@
+$detailWidth: 360px;
+
+@mixin boxStyle {
+  border: 1px solid $lightgray;
+  border-radius: 10px;
+  padding: 10px 12px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .wrapper {
-  width: 360px;
-  min-width: 360px;
-  padding: 20px;
+  @include flex(start, stretch, column);
+  width: $detailWidth;
+  min-width: $detailWidth;
+
   background-color: $white;
   border-left: 1px solid $black;
+
+  .toolbar {
+    text-align: right;
+    padding: 8px 16px;
+
+    .closeButton {
+      padding: 4px;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $lightgray;
+      }
+    }
+  }
+
+  .taskWrapper {
+    @include flex(start, stretch, column);
+    flex: 1;
+    gap: 8px;
+    padding: 0 16px;
+    overflow-y: auto;
+
+    .titleWrapper {
+      @include flex(start, center);
+      @include boxStyle;
+      gap: 8px;
+
+      font-size: 18px;
+      font-weight: 600;
+
+      .isCompleted {
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        background-color: $white;
+      }
+
+      .title {
+        flex: 1;
+      }
+
+      &:has(.isChecked) {
+        .isCompleted {
+          background-color: $purple;
+          border: 1px solid $purple;
+        }
+
+        .title {
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    .expiredAt {
+      @include boxStyle;
+      color: $gray;
+
+      &.hasExpiredAt {
+        color: $red;
+      }
+    }
+
+    .memo {
+      @include boxStyle;
+    }
+  }
+
+  .bottomToolbar {
+    @include flex(start, center);
+    gap: 8px;
+    padding: 8px 16px;
+    border-top: 1px solid $lightgray;
+    color: $gray;
+
+    .createdAt {
+      flex: 1;
+      text-align: center;
+    }
+
+    .deleteButton {
+      padding: 4px;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $lightgray;
+      }
+    }
+  }
 }

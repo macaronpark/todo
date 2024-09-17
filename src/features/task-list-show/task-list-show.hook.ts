@@ -1,7 +1,7 @@
 import { type TTask, getTaskListFromDB, useTaskContext } from '@entities/task';
 
 const useTaskListShow = () => {
-  const { taskList, setTaskList } = useTaskContext();
+  const { setTaskList } = useTaskContext();
 
   const getTaskList = async (categoryId: number) => {
     try {
@@ -23,7 +23,6 @@ const useTaskListShow = () => {
   };
 
   return {
-    taskList,
     getTaskList,
   };
 };
