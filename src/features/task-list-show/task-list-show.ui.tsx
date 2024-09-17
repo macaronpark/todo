@@ -5,7 +5,7 @@ import styles from './task-list-show.module.scss';
 import { useEffect } from 'react';
 
 type TProps = {
-  categoryId?: string;
+  categoryId?: number;
 };
 
 const TaskList = ({ categoryId }: TProps) => {
