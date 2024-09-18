@@ -1,11 +1,6 @@
 .wrapper {
-  @include flex(start, stretch);
-  flex-grow: 1;
-
-  .listWrapper {
-    @include flex(start, stretch, column);
-    flex: 1;
-    background-color: $purple;
-    border-top-left-radius: 10px;
-  }
+  @include flex(start, stretch, column);
+  flex: 1;
+  background-color: $purple;
+  border-top-left-radius: 10px;
 }
