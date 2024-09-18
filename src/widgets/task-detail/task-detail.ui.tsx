@@ -1,3 +1,5 @@
+import { TaskDetailCloseButton } from '@features/task-detail-close';
+
 import { TTask } from '@entities/task';
 
 import styles from './task-detail.module.scss';
@@ -14,12 +16,7 @@ const TaskDetail = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
-        <button
-          className={styles.closeButton}
-          title="태스크 상세보기 닫기 버튼"
-        >
-          ✖️
-        </button>
+        <TaskDetailCloseButton />
       </div>
       <div className={styles.taskWrapper}>
         <div className={styles.titleWrapper}>
