@@ -5,13 +5,15 @@ import { TaskAddInputBar } from '@features/task-add';
 import styles from './task-section.module.scss';
 
 type TProps = {
-  selectedCategoryId: number;
-  selectedCategoryTitle: string;
+  selectedCategoryId?: number;
+  selectedCategoryTitle?: string;
 };
 
 const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
   return (
     <div className={styles.wrapper}>
+      {selectedCategoryId && (
+        <>
       <CategoryHeader
         categoryId={selectedCategoryId}
         categoryTitle={selectedCategoryTitle}
@@ -20,6 +22,8 @@ const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
       </CategoryHeader>
       <TaskList categoryId={selectedCategoryId} />
       <TaskAddInputBar />
+        </>
+      )}
     </div>
   );
 };

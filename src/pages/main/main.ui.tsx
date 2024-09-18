@@ -15,12 +15,10 @@ const MainPage = () => {
     <div className={styles.wrapper}>
       <Sidebar />
       <div className={styles.taskWrapper}>
-        {selectedCategory && (
-          <TaskSection
-            selectedCategoryId={selectedCategory.id}
-            selectedCategoryTitle={selectedCategory.title}
-          />
-        )}
+        <TaskSection
+          selectedCategoryId={selectedCategory?.id}
+          selectedCategoryTitle={selectedCategory?.title}
+        />
         {selectedTask && (
           <TaskDetail
             title={selectedTask.title}
