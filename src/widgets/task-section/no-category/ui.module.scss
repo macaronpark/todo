@@ -1,0 +1,15 @@
+@import '../ui.mixin.scss';
+
+.noCategoryWrapper {
+  @include flex(center, center, column);
+  @include backgroundStyle;
+
+  .image {
+    font-size: 80px;
+  }
+  .desc {
+    margin-top: 8px;
+    text-align: center;
+    color: $white;
+  }
+}
