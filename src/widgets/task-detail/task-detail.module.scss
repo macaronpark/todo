@@ -4,10 +4,7 @@ $detailWidth: 360px;
   border: 1px solid $lightgray;
   border-radius: 10px;
   padding: 10px 12px;
-
-  &:focus {
-    outline: none;
-  }
+  outline: none;
 }
 
 .wrapper {
@@ -43,7 +40,6 @@ $detailWidth: 360px;
       @include flex(start, center);
       @include boxStyle;
       gap: 8px;
-
       font-size: 18px;
       font-weight: 600;
 
