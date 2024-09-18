@@ -1,8 +1,8 @@
+@import '../ui.mixin.scss';
+
 .noCategoryWrapper {
   @include flex(center, center, column);
-  flex: 1;
-  background-color: $purple;
-  border-top-left-radius: 10px;
+  @include backgroundStyle;
 
   .image {
     font-size: 80px;
