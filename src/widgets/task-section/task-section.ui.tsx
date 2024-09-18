@@ -23,7 +23,10 @@ const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
             categoryId={selectedCategoryId}
             categoryTitle={selectedCategoryTitle}
           >
-            <CategoryDeleteButton categoryId={selectedCategoryId} />
+            <CategoryDeleteButton
+              categoryId={selectedCategoryId}
+              categoryTitle={selectedCategoryTitle}
+            />
           </CategoryHeader>
           <TaskList categoryId={selectedCategoryId} />
           <TaskAddInputBar />

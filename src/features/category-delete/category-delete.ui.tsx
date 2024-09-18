@@ -2,15 +2,19 @@ import useCategoryDelete from './category-delete.hook';
 import styles from './category-delete.module.scss';
 
 type TProps = {
-  categoryId?: number;
+  categoryId: number;
+  categoryTitle?: string;
 };
 
-const CategoryDeleteButton = ({ categoryId }: TProps) => {
+const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
   const { deleteCategory } = useCategoryDelete();
 
   const handleCategoryDeleteButtonClick = () => {
     if (!categoryId) return;
-    deleteCategory(categoryId);
+
+    if (window.confirm(`🚨 '${categoryTitle}'를 영구적으로 삭제합니다.`)) {
+      deleteCategory(categoryId);
+    }
   };
 
   return (
