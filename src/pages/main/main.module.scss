@@ -1,4 +1,9 @@
 .wrapper {
   display: flex;
   height: 100vh;
+
+  .taskWrapper {
+    @include flex(start, stretch);
+    flex-grow: 1;
+  }
 }

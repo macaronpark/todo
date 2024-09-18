@@ -1,12 +1,36 @@
 import { Sidebar } from '@widgets/sidebar';
 import { TaskSection } from '@widgets/task-section';
+import { TaskDetail } from '@widgets/task-detail';
+
+import { useCategoryContext } from '@entities/category';
+import { useTaskContext } from '@entities/task';
+
 import styles from './main.module.scss';
 
 const MainPage = () => {
+  const { selectedCategory } = useCategoryContext();
+  const { selectedTask } = useTaskContext();
+
   return (
     <div className={styles.wrapper}>
       <Sidebar />
-      <TaskSection />
+      <div className={styles.taskWrapper}>
+        {selectedCategory && (
+          <TaskSection
+            selectedCategoryId={selectedCategory.id}
+            selectedCategoryTitle={selectedCategory.title}
+          />
+        )}
+        {selectedTask && (
+          <TaskDetail
+            title={selectedTask.title}
+            createdAt={selectedTask.createdAt}
+            expiredAt={selectedTask?.expiredAt}
+            isCompleted={selectedTask.isCompleted}
+            memo={selectedTask?.memo}
+          />
+        )}
+      </div>
     </div>
   );
 };

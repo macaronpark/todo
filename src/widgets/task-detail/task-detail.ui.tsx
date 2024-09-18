@@ -1,6 +1,6 @@
 import { TTask } from '@entities/task';
 
-import styles from './task-detail-show.module.scss';
+import styles from './task-detail.module.scss';
 
 type TProps = Omit<TTask, 'id' | 'categoryId'>;
 
