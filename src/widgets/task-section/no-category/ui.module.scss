@@ -1,0 +1,15 @@
+.noCategoryWrapper {
+  @include flex(center, center, column);
+  flex: 1;
+  background-color: $purple;
+  border-top-left-radius: 10px;
+
+  .image {
+    font-size: 80px;
+  }
+  .desc {
+    margin-top: 8px;
+    text-align: center;
+    color: $white;
+  }
+}
