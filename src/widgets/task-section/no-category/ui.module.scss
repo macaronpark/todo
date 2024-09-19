@@ -3,13 +3,17 @@
 .noCategoryWrapper {
   @include flex(center, center, column);
   @include backgroundStyle;
+  gap: 16px;
 
   .image {
     font-size: 80px;
   }
   .desc {
-    margin-top: 8px;
     text-align: center;
     color: $white;
+  }
+  .categoryAddButton {
+    width: max-content;
+    margin: 0;
   }
 }
