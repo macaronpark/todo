@@ -1,6 +1,14 @@
 # todo
 
-토이 프로젝트 (2024-08-29~)
+학습을 위한 토이 프로젝트 `2024-08-29~`
+
+- 목표
+  - ⬜ 투두리스트 앱 완성
+    - 레퍼런스: [Microsoft To Do](https://www.microsoft.com/ko-kr/microsoft-365/microsoft-to-do-list-app)
+    - 기획: [/devlog/00.유저스토리와 기획](/devlog/00.유저스토리와%20기획.md)
+    - 개발 히스토리: [macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls)
+  - ⬜ [Feature-Sliced Design](https://feature-sliced.design/) 학습과 적용
+  - ⬜ [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 학습과 적용
 
 <br />
 
@@ -18,8 +26,6 @@
 
 ### 개발 기록
 
-[macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls) 참고
-
 <br />
 
 ## 폴더 구조
@@ -36,8 +42,3 @@
   - 📂 `shared`: 앱 전반에서 사용하는 리소스
 
 <br />
-
-> 참고
->
-> - https://feature-sliced.design/
-> - [macaronpark/todo/devlog/05.feature-sliced-design.md](/devlog/05.feature-sliced-design.md)
