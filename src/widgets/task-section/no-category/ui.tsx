@@ -1,3 +1,5 @@
+import { CategoryAddButton } from '@features/category-add';
+
 import styles from './ui.module.scss';
 
 const NoCategory = () => {
@@ -9,6 +11,7 @@ const NoCategory = () => {
         <br />
         태스크를 관리해보세요.
       </div>
+      <CategoryAddButton className={styles.categoryAddButton} />
     </div>
   );
 };
