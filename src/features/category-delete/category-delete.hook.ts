@@ -1,10 +1,5 @@
 import { deleteCategoryFromDB, useCategoryContext } from '@entities/category';
 
-type TArgs = {
-  id?: string;
-  onSuccess?: () => void;
-};
-
 const useCategoryDelete = () => {
   const { categoryList, setCategoryList, setSelectedCategory } =
     useCategoryContext();
