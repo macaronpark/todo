@@ -1,5 +1,5 @@
 import type { TCategory, TNewCatergory } from './category.type';
-import { EStoreName, ETransactionMode, initDB } from '@shared/db';
+import { EStoreName, ETransactionMode, openDB } from '@shared/db';
 
 export const getCategoryListFromDB = async (): Promise<TCategory[]> => {
   const db = await openDB();
@@ -7,7 +7,10 @@ export const getCategoryListFromDB = async (): Promise<TCategory[]> => {
     .transaction(EStoreName.categoryList, ETransactionMode.readonly)
     .objectStore(EStoreName.categoryList);
 
+  return new Promise<TCategory[]>((resolve, reject) => {
     const request = store.getAll();
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
   });
 };
 
@@ -19,7 +22,7 @@ export const addCategoryToDB = async (
     .transaction(EStoreName.categoryList, ETransactionMode.readwrite)
     .objectStore(EStoreName.categoryList);
 
-  return new Promise((resolve, reject) => {
+  return new Promise<TCategory>((resolve, reject) => {
     const request = store.add(newCategory);
 
     request.onsuccess = () => {
@@ -31,9 +34,7 @@ export const addCategoryToDB = async (
       resolve(category);
     };
 
-    request.onerror = () => {
-      reject(request.error);
-    };
+    request.onerror = () => reject(request.error);
   });
 };
 
@@ -47,6 +48,28 @@ export const updateCategoryToDB = async (category: TCategory) => {
 };
 
 export const deleteCategoryFromDB = async (categoryId: number) => {
-  const db = await initDB({ storeName: EStoreName.categoryList });
-  return db.delete(categoryId);
+  const db = await openDB();
+  const transaction = db.transaction(
+    [EStoreName.categoryList, EStoreName.taskList],
+    ETransactionMode.readwrite
+  );
+
+  const categoryListStore = transaction.objectStore(EStoreName.categoryList);
+  categoryListStore.delete(categoryId);
+
+  const taskListStore = transaction.objectStore(EStoreName.taskList);
+  const taskIndex = taskListStore.index('categoryId');
+  const taskQuery = taskIndex.getAllKeys(categoryId);
+  taskQuery.onsuccess = () => {
+    const taskKeys = taskQuery.result;
+
+    taskKeys.forEach((taskKey) => {
+      taskListStore.delete(taskKey);
+    });
+  };
+
+  return new Promise<void>((resolve, reject) => {
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error);
+  });
 };
