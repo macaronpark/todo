@@ -12,7 +12,11 @@ const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
   const handleCategoryDeleteButtonClick = () => {
     if (!categoryId) return;
 
-    if (window.confirm(`🚨 '${categoryTitle}'를 영구적으로 삭제합니다.`)) {
+    if (
+      window.confirm(
+        `🚨 '${categoryTitle}'와 모든 태스크를 영구적으로 삭제합니다.`
+      )
+    ) {
       deleteCategory(categoryId);
     }
   };
