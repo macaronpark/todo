@@ -11,19 +11,7 @@ export enum EStoreName {
   taskList = 'task_list',
 }
 
-export const initDB = async ({
-  storeName,
-  transactionMode = ETransactionMode.readwrite,
-}: {
-  storeName: EStoreName;
-  transactionMode?: ETransactionMode;
-}) => {
-  const db = await openDB();
-  const store = getObjectStore({ db, storeName, transactionMode });
-  return store;
-};
-
-const openDB = (): Promise<IDBDatabase> => {
+export const openDB = (): Promise<IDBDatabase> => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
 

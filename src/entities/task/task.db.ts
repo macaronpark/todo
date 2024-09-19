@@ -1,16 +1,16 @@
-import { EStoreName, ETransactionMode, initDB } from '@shared/db';
+import { EStoreName, ETransactionMode, openDB } from '@shared/db';
 import type { TNewTask, TTask } from '@entities/task';
 
 export const getTaskListFromDB = async (
   categoryId: number
 ): Promise<TTask[]> => {
-  const db = await initDB({
-    storeName: EStoreName.taskList,
-    transactionMode: ETransactionMode.readonly,
-  });
+  const db = await openDB();
+  const store = db
+    .transaction(EStoreName.taskList, ETransactionMode.readonly)
+    .objectStore(EStoreName.taskList);
 
   return new Promise((resolve, reject) => {
-    const request = db.index('categoryId');
+    const request = store.index('categoryId');
     const query = request.getAll(categoryId);
 
     query.onsuccess = () => {
@@ -24,18 +24,18 @@ export const getTaskListFromDB = async (
 };
 
 export const addTaskToDB = async (newTask: TNewTask): Promise<TTask> => {
-  const db = await initDB({
-    storeName: EStoreName.taskList,
-    transactionMode: ETransactionMode.readwrite,
-  });
+  const db = await openDB();
+  const store = db
+    .transaction(EStoreName.taskList, ETransactionMode.readwrite)
+    .objectStore(EStoreName.taskList);
 
   return new Promise((resolve, reject) => {
-    const request = db.add(newTask);
+    const request = store.add(newTask);
 
     request.onsuccess = () => {
       const task = {
         ...newTask,
-        id: request.result,
+        id: Number(request.result),
       };
 
       resolve(task);
@@ -48,11 +48,19 @@ export const addTaskToDB = async (newTask: TNewTask): Promise<TTask> => {
 };
 
 export const updateTaskToDB = async (task: TTask) => {
-  const db = await initDB({ storeName: EStoreName.taskList });
-  return db.put(task);
+  const db = await openDB();
+  const store = db
+    .transaction(EStoreName.taskList, ETransactionMode.readwrite)
+    .objectStore(EStoreName.taskList);
+
+  return store.put(task);
 };
 
 export const deleteTaskFromDB = async (categoryId: number) => {
-  const db = await initDB({ storeName: EStoreName.taskList });
-  return db.delete(categoryId);
+  const db = await openDB();
+  const store = db
+    .transaction(EStoreName.taskList, ETransactionMode.readwrite)
+    .objectStore(EStoreName.taskList);
+
+  return store.delete(categoryId);
 };
