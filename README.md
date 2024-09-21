@@ -5,7 +5,7 @@
 - 목표
   - ⬜ 투두리스트 앱 완성
     - 레퍼런스: [Microsoft To Do](https://www.microsoft.com/ko-kr/microsoft-365/microsoft-to-do-list-app)
-    - 기획: [/devlog/00.유저스토리와 기획](/devlog/00.유저스토리와%20기획.md)
+    - 개발 체크리스트: [/devlog/00.checklist.md](/devlog/00.checklist.md)
     - 개발 히스토리: [macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls)
   - ⬜ [Feature-Sliced Design](https://feature-sliced.design/) 학습과 적용
   - ⬜ [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 학습과 적용
