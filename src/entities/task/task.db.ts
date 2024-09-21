@@ -56,11 +56,16 @@ export const updateTaskToDB = async (task: TTask) => {
   return store.put(task);
 };
 
-export const deleteTaskFromDB = async (categoryId: number) => {
+export const deleteTaskFromDB = async (taskId: number) => {
   const db = await openDB();
   const store = db
     .transaction(EStoreName.taskList, ETransactionMode.readwrite)
     .objectStore(EStoreName.taskList);
 
-  return store.delete(categoryId);
+  return new Promise<void>((resolve, reject) => {
+    const request = store.delete(taskId);
+
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
 };

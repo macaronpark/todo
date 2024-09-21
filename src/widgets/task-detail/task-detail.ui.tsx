@@ -1,12 +1,14 @@
 import { TaskDetailCloseButton } from '@features/task-detail-close';
+import { TaskDeleteButton } from '@features/task-delete';
 
 import { TTask } from '@entities/task';
 
 import styles from './task-detail.module.scss';
 
-type TProps = Omit<TTask, 'id' | 'categoryId'>;
+type TProps = Omit<TTask, 'categoryId'>;
 
 const TaskDetail = ({
+  id,
   title,
   createdAt,
   expiredAt,
@@ -40,9 +42,7 @@ const TaskDetail = ({
       </div>
       <div className={styles.bottomToolbar}>
         <div className={styles.createdAt}>{createdAt}</div>
-        <button className={styles.deleteButton} title="태스크 삭제 버튼">
-          🗑️
-        </button>
+        <TaskDeleteButton id={id} />
       </div>
     </div>
   );
