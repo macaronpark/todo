@@ -6,8 +6,16 @@ type TProps = {
 };
 
 const TaskDeleteButton = ({ id }: TProps) => {
+  const { deleteTask } = useTaskDelete();
 
   const handleTaskDeleteButtonClick = async () => {
+    try {
+      await deleteTask(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        window.alert(error.message);
+      }
+    }
   };
 
   return (
