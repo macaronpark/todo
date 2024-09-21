@@ -7,7 +7,7 @@ $detailWidth: 360px;
   outline: none;
 }
 
-.wrapper {
+.TaskDetail {
   @include flex(start, stretch, column);
   width: $detailWidth;
   min-width: $detailWidth;

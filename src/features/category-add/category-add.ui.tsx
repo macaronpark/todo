@@ -1,4 +1,4 @@
-import useCategoryAdd from './category-add.api';
+import useCategoryAdd from './category-add.hook';
 import styles from './category-add.module.scss';
 
 type TProps = {
@@ -18,7 +18,7 @@ const CategoryAddButton = ({ className }: TProps) => {
 
   return (
     <button
-      className={`${styles.addCategoryButton} ${className ?? ''}`}
+      className={`${styles.CategoryAddButton} ${className ?? ''}`}
       onClick={handleCategoryAddButtonClick}
     >
       ➕ 카테고리 추가

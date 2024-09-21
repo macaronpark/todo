@@ -7,7 +7,7 @@ type TProps = {
 
 const Task = ({ title, onClick }: TProps) => {
   return (
-    <div className={styles.wrapper} onClick={onClick}>
+    <div className={styles.Task} onClick={onClick}>
       {title}
     </div>
   );

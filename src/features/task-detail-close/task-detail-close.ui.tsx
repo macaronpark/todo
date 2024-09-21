@@ -1,5 +1,5 @@
 import { useTaskContext } from '@entities/task';
-import styles from './ui.module.scss';
+import styles from './task-detail-close.module.scss';
 
 const TaskDetailCloseButton = () => {
   const { setSelectedTask } = useTaskContext();
@@ -10,7 +10,7 @@ const TaskDetailCloseButton = () => {
 
   return (
     <button
-      className={styles.closeButton}
+      className={styles.TaskDetailCloseButton}
       title="태스크 상세보기 닫기 버튼"
       onClick={handleClose}
     >

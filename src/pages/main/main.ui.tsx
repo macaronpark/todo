@@ -12,7 +12,7 @@ const MainPage = () => {
   const { selectedTask } = useTaskContext();
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.MainPage}>
       <Sidebar />
       <div className={styles.taskWrapper}>
         <TaskSection

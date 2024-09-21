@@ -39,7 +39,7 @@ const TaskAddInputBar = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.TaskAddInputBar}>
       <div className={styles.inputWrapper}>
         <div className={styles.icon}>➕</div>
         <input

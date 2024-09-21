@@ -23,7 +23,7 @@ const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
 
   return (
     <button
-      className={styles.deleteCategoryButton}
+      className={styles.CategoryDeleteButton}
       onClick={handleCategoryDeleteButtonClick}
     >
       삭제

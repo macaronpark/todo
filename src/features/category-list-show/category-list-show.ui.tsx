@@ -17,7 +17,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.CategoryList}>
       {categoryList.map((category) => (
         <Category
           key={category.id}

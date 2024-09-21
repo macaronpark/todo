@@ -2,8 +2,9 @@ import { CategoryHeader } from '@features/category-header-show';
 import { CategoryDeleteButton } from '@features/category-delete';
 import { TaskList } from '@features/task-list-show';
 import { TaskAddInputBar } from '@features/task-add';
-import styles from './task-section.module.scss';
+
 import { NoCategory } from './no-category';
+import styles from './task-section.module.scss';
 
 type TProps = {
   selectedCategoryId?: number;
@@ -16,7 +17,7 @@ const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.TaskSection}>
       {selectedCategoryId && (
         <>
           <CategoryHeader

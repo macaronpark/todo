@@ -16,7 +16,7 @@ const TaskDetail = ({
   memo,
 }: TProps) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.TaskDetail}>
       <div className={styles.toolbar}>
         <TaskDetailCloseButton />
       </div>
