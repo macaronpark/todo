@@ -1,4 +1,4 @@
-@import './ui.mixin.scss';
+@import './task-section.mixin.scss';
 
 .TaskSection {
   @include flex(start, stretch, column);
