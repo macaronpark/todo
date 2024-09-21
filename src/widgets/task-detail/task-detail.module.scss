@@ -84,14 +84,5 @@ $detailWidth: 360px;
       flex: 1;
       text-align: center;
     }
-
-    .deleteButton {
-      padding: 4px;
-      border-radius: 10px;
-
-      &:hover {
-        background-color: $lightgray;
-      }
-    }
   }
 }

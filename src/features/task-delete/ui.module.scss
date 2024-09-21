@@ -1,0 +1,8 @@
+.TaskDeleteButton {
+  padding: 4px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $lightgray;
+  }
+}

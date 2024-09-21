@@ -21,6 +21,7 @@ const MainPage = () => {
         />
         {selectedTask && (
           <TaskDetail
+            id={selectedTask.id}
             title={selectedTask.title}
             createdAt={selectedTask.createdAt}
             expiredAt={selectedTask?.expiredAt}
