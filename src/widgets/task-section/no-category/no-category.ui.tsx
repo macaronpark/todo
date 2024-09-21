@@ -1,6 +1,6 @@
 import { CategoryAddButton } from '@features/category-add';
 
-import styles from './ui.module.scss';
+import styles from './no-category.module.scss';
 
 const NoCategory = () => {
   return (

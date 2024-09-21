@@ -1,5 +1,5 @@
-import useTaskDelete from './hook';
-import styles from './ui.module.scss';
+import useTaskDelete from './task-delete.hook';
+import styles from './task-delete.module.scss';
 
 type TProps = {
   id: number;

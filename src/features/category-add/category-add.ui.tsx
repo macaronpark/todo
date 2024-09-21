@@ -1,4 +1,4 @@
-import useCategoryAdd from './category-add.api';
+import useCategoryAdd from './category-add.hook';
 import styles from './category-add.module.scss';
 
 type TProps = {

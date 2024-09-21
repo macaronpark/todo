@@ -1,1 +1,1 @@
-export { default as NoCategory } from './ui';
+export { default as NoCategory } from './no-category.ui';

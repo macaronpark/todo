@@ -1,5 +1,5 @@
 import { useTaskContext } from '@entities/task';
-import styles from './ui.module.scss';
+import styles from './task-detail-close.module.scss';
 
 const TaskDetailCloseButton = () => {
   const { setSelectedTask } = useTaskContext();
