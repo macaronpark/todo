@@ -1,6 +1,6 @@
 @import './ui.mixin.scss';
 
-.wrapper {
+.TaskSection {
   @include flex(start, stretch, column);
   @include backgroundStyle;
 }

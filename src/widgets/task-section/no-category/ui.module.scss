@@ -1,6 +1,6 @@
 @import '../ui.mixin.scss';
 
-.noCategoryWrapper {
+.NoCategory {
   @include flex(center, center, column);
   @include backgroundStyle;
   gap: 16px;

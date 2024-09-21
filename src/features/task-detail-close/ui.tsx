@@ -10,7 +10,7 @@ const TaskDetailCloseButton = () => {
 
   return (
     <button
-      className={styles.closeButton}
+      className={styles.TaskDetailCloseButton}
       title="태스크 상세보기 닫기 버튼"
       onClick={handleClose}
     >

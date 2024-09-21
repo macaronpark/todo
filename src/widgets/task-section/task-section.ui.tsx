@@ -16,7 +16,7 @@ const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.TaskSection}>
       {selectedCategoryId && (
         <>
           <CategoryHeader

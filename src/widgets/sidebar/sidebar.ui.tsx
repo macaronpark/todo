@@ -4,7 +4,7 @@ import styles from './sidebar.module.scss';
 
 const Sidebar = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.Sidebar}>
       <CategoryList />
       <CategoryAddButton />
     </div>

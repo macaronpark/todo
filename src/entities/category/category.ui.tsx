@@ -9,7 +9,7 @@ type TProps = TCategory & {
 const Category = ({ id, title, isSelected, onClick }: TProps) => {
   return (
     <button
-      className={`${styles.wrapper} ${isSelected ? styles.selected : ''}`}
+      className={`${styles.Category} ${isSelected ? styles.selected : ''}`}
       onClick={onClick}
     >{`🟰 ${title}(#${id})`}</button>
   );

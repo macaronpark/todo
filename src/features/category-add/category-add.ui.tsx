@@ -18,7 +18,7 @@ const CategoryAddButton = ({ className }: TProps) => {
 
   return (
     <button
-      className={`${styles.addCategoryButton} ${className ?? ''}`}
+      className={`${styles.CategoryAddButton} ${className ?? ''}`}
       onClick={handleCategoryAddButtonClick}
     >
       ➕ 카테고리 추가

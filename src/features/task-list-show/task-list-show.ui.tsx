@@ -28,7 +28,7 @@ const TaskList = ({ categoryId }: TProps) => {
   }, [categoryId]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.TaskList}>
       {taskList.map((task) => (
         <Task
           key={task.id}

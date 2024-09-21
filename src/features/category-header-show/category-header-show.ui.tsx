@@ -15,7 +15,7 @@ const CategoryHeader = ({
   const categoryTitle = id ? `${title} (#${id})` : '-';
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.CategoryHeader}>
       <h1 className={styles.title}>{categoryTitle}</h1>
       {children}
     </div>
