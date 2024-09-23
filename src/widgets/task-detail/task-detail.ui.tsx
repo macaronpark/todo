@@ -3,8 +3,9 @@ import { TaskDeleteButton } from '@features/task-delete';
 
 import { TTask } from '@entities/task';
 
-import styles from './task-detail.module.scss';
 import { formatDateString } from '@shared/date';
+
+import styles from './task-detail.module.scss';
 
 type TProps = Omit<TTask, 'categoryId'>;
 
