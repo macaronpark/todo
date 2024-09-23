@@ -3,25 +3,22 @@ export const formatDateString = (dateString: string): string => {
   const inputDate = new Date(dateString);
   const today = new Date();
 
-  // UTC 기준으로 시간 포맷: hh:MM
-  const hours = inputDate.getUTCHours().toString().padStart(2, '0');
-  const minutes = inputDate.getUTCMinutes().toString().padStart(2, '0');
+  // 현지 시간 기준으로 시간 포맷: hh:mm
+  const hours = inputDate.getHours().toString().padStart(2, '0');
+  const minutes = inputDate.getMinutes().toString().padStart(2, '0');
   const timeString = `${hours}:${minutes}`;
 
-  const isToday =
-    today.toISOString().slice(0, 10) === inputDate.toISOString().slice(0, 10);
+  const isToday = today.toLocaleDateString() === inputDate.toLocaleDateString();
 
   const yesterday = new Date(today);
-  yesterday.setUTCDate(today.getUTCDate() - 1);
+  yesterday.setDate(today.getDate() - 1);
   const isYesterday =
-    yesterday.toISOString().slice(0, 10) ===
-    inputDate.toISOString().slice(0, 10);
+    yesterday.toLocaleDateString() === inputDate.toLocaleDateString();
 
   const tomorrow = new Date(today);
-  tomorrow.setUTCDate(today.getUTCDate() + 1);
+  tomorrow.setDate(today.getDate() + 1);
   const isTomorrow =
-    tomorrow.toISOString().slice(0, 10) ===
-    inputDate.toISOString().slice(0, 10);
+    tomorrow.toLocaleDateString() === inputDate.toLocaleDateString();
 
   if (isToday) {
     return `오늘 ${timeString}`;
@@ -30,9 +27,9 @@ export const formatDateString = (dateString: string): string => {
   } else if (isTomorrow) {
     return `내일 ${timeString}`;
   } else {
-    const month = inputDate.getUTCMonth() + 1;
-    const date = inputDate.getUTCDate();
-    const dayOfWeek = days[inputDate.getUTCDay()];
+    const month = inputDate.getMonth() + 1;
+    const date = inputDate.getDate();
+    const dayOfWeek = days[inputDate.getDay()];
     return `${month}월 ${date}일 ${dayOfWeek} ${timeString}`;
   }
 };

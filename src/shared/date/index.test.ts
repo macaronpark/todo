@@ -1,86 +1,41 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterAll } from 'vitest';
 import { formatDateString } from './index';
 
-describe('formatDateString 함수 테스트', () => {
-  it('현재 날짜에 대해 "오늘 hh:MM"을 반환해야 한다', () => {
-    const today = new Date().toISOString();
+describe('formatDateString', () => {
+  const mockDate = (dateString: string) => {
+    const date = new Date(dateString);
+    vi.setSystemTime(date);
+  };
 
-    const utcHours = new Date().getUTCHours().toString().padStart(2, '0');
-    const utcMinutes = new Date().getUTCMinutes().toString().padStart(2, '0');
-    const expectedTime = `${utcHours}:${utcMinutes}`;
-
-    expect(formatDateString(today)).toBe(`오늘 ${expectedTime}`);
+  afterAll(() => {
+    vi.useRealTimers();
   });
 
-  it('어제 날짜에 대해 "어제 hh:MM"을 반환해야 한다', () => {
-    const yesterday = new Date(Date.now() - 86400000).toISOString();
+  it('날짜가 오늘일 때 "오늘"을 반환해야 한다', () => {
+    mockDate('2024-09-23T12:00:00');
 
-    const utcHours = new Date(Date.now() - 86400000)
-      .getUTCHours()
-      .toString()
-      .padStart(2, '0');
-    const utcMinutes = new Date(Date.now() - 86400000)
-      .getUTCMinutes()
-      .toString()
-      .padStart(2, '0');
-    const expectedTime = `${utcHours}:${utcMinutes}`;
-
-    expect(formatDateString(yesterday)).toBe(`어제 ${expectedTime}`);
+    const result = formatDateString('2024-09-23T10:30:00');
+    expect(result).toBe('오늘 10:30');
   });
 
-  it('내일 날짜에 대해 "내일 hh:MM"을 반환해야 한다', () => {
-    const tomorrow = new Date(Date.now() + 86400000).toISOString();
+  it('날짜가 어제일 때 "어제"를 반환해야 한다', () => {
+    mockDate('2024-09-23T12:00:00');
 
-    const utcHours = new Date(Date.now() + 86400000)
-      .getUTCHours()
-      .toString()
-      .padStart(2, '0');
-    const utcMinutes = new Date(Date.now() + 86400000)
-      .getUTCMinutes()
-      .toString()
-      .padStart(2, '0');
-    const expectedTime = `${utcHours}:${utcMinutes}`;
-
-    expect(formatDateString(tomorrow)).toBe(`내일 ${expectedTime}`);
+    const result = formatDateString('2024-09-22T10:30:00');
+    expect(result).toBe('어제 10:30');
   });
 
-  it('오늘, 어제, 내일이 아닌 날짜에 대해 "x월 x일 요일 hh:MM" 형식의 날짜를 반환해야 한다', () => {
-    const testDate = new Date('2023-09-20T15:30:00.000Z').toISOString();
+  it('날짜가 내일일 때 "내일"을 반환해야 한다', () => {
+    mockDate('2024-09-23T12:00:00');
 
-    expect(formatDateString(testDate)).toBe('9월 20일 수 15:30');
+    const result = formatDateString('2024-09-24T10:30:00');
+    expect(result).toBe('내일 10:30');
   });
 
-  it('자정에 가까운 경계 조건을 정확히 처리해야 한다', () => {
-    const lateNightYesterday = new Date(
-      Date.now() - (86400000 - 1000)
-    ).toISOString(); // 어제 23:59:59
-    const earlyMorningTomorrow = new Date(
-      Date.now() + (86400000 + 1000)
-    ).toISOString(); // 내일 00:00:01
+  it('날짜가 오늘, 어제, 내일이 아닐 때 포맷된 날짜를 반환해야 한다', () => {
+    mockDate('2024-09-23T12:00:00');
 
-    const lateNightHours = new Date(Date.now() - (86400000 - 1000))
-      .getUTCHours()
-      .toString()
-      .padStart(2, '0');
-    const lateNightMinutes = new Date(Date.now() - (86400000 - 1000))
-      .getUTCMinutes()
-      .toString()
-      .padStart(2, '0');
-
-    const earlyMorningHours = new Date(Date.now() + (86400000 + 1000))
-      .getUTCHours()
-      .toString()
-      .padStart(2, '0');
-    const earlyMorningMinutes = new Date(Date.now() + (86400000 + 1000))
-      .getUTCMinutes()
-      .toString()
-      .padStart(2, '0');
-
-    expect(formatDateString(lateNightYesterday)).toBe(
-      `어제 ${lateNightHours}:${lateNightMinutes}`
-    );
-    expect(formatDateString(earlyMorningTomorrow)).toBe(
-      `내일 ${earlyMorningHours}:${earlyMorningMinutes}`
-    );
+    const result = formatDateString('2024-09-20T10:30:00');
+    expect(result).toBe('9월 20일 금 10:30');
   });
 });
