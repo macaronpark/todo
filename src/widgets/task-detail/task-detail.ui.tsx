@@ -4,6 +4,7 @@ import { TaskDeleteButton } from '@features/task-delete';
 import { TTask } from '@entities/task';
 
 import styles from './task-detail.module.scss';
+import { formatDateString } from '@shared/date';
 
 type TProps = Omit<TTask, 'categoryId'>;
 
@@ -41,7 +42,9 @@ const TaskDetail = ({
         </textarea>
       </div>
       <div className={styles.bottomToolbar}>
-        <div className={styles.createdAt}>{createdAt}</div>
+        <div className={styles.createdAt}>{`${formatDateString(
+          createdAt
+        )}에 생성됨`}</div>
         <TaskDeleteButton id={id} />
       </div>
     </div>
