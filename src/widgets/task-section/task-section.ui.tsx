@@ -1,6 +1,5 @@
 import { CategoryHeader } from '@features/category-header-show';
 import { CategoryDeleteButton } from '@features/category-delete';
-import { TaskList } from '@features/task-list-show';
 import { TaskAddInputBar } from '@features/task-add';
 
 import { NoCategory } from './no-category';
@@ -9,9 +8,14 @@ import styles from './task-section.module.scss';
 type TProps = {
   selectedCategoryId?: number;
   selectedCategoryTitle?: string;
+  children: React.ReactNode;
 };
 
-const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
+const TaskSection = ({
+  selectedCategoryId,
+  selectedCategoryTitle,
+  children,
+}: TProps) => {
   if (!selectedCategoryId) {
     return <NoCategory />;
   }
@@ -29,7 +33,7 @@ const TaskSection = ({ selectedCategoryId, selectedCategoryTitle }: TProps) => {
               categoryTitle={selectedCategoryTitle}
             />
           </CategoryHeader>
-          <TaskList categoryId={selectedCategoryId} />
+          {children}
           <TaskAddInputBar />
         </>
       )}
