@@ -1,5 +1,7 @@
 import { Sidebar } from '@widgets/sidebar';
+import { CategoryList } from '@widgets/category-list';
 import { TaskSection } from '@widgets/task-section';
+import { TaskList } from '@widgets/task-list';
 import { TaskDetail } from '@widgets/task-detail';
 
 import { useCategoryContext } from '@entities/category';
@@ -13,12 +15,16 @@ const MainPage = () => {
 
   return (
     <div className={styles.MainPage}>
-      <Sidebar />
+      <Sidebar>
+        <CategoryList />
+      </Sidebar>
       <div className={styles.taskWrapper}>
         <TaskSection
           selectedCategoryId={selectedCategory?.id}
           selectedCategoryTitle={selectedCategory?.title}
-        />
+        >
+          <TaskList categoryId={selectedCategory?.id} />
+        </TaskSection>
         {selectedTask && (
           <TaskDetail
             id={selectedTask.id}

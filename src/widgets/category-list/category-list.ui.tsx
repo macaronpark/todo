@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+
 import { Category } from '@entities/category';
 
-import useCategoryListShow from './category-list-show.hook';
-import styles from './category-list-show.module.scss';
-import { useEffect } from 'react';
+import useCategoryListShow from './category-list.hook';
+import styles from './category-list.module.scss';
 
 const CategoryList = () => {
   const {
