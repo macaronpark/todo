@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+
 import { Task, TTask, useTaskContext } from '@entities/task';
 
-import useTaskListShow from './task-list-show.hook';
-import styles from './task-list-show.module.scss';
-import { useEffect } from 'react';
+import useTaskListShow from './task-list.hook';
+import styles from './task-list.module.scss';
 
 type TProps = {
   categoryId?: number;
