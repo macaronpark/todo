@@ -1,15 +1,20 @@
 .Category {
+  list-style-type: none;
   width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  background-color: $white;
-  cursor: pointer;
 
-  &:hover {
-    background-color: $lightgray;
-  }
+  & > button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: $white;
+    cursor: pointer;
 
-  &.selected {
-    background-color: $lightgray;
+    &:hover {
+      background-color: $lightgray;
+    }
+
+    &.selected {
+      background-color: $lightgray;
+    }
   }
 }
