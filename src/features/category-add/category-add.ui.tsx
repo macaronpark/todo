@@ -1,3 +1,4 @@
+import { TEST_ID } from '@shared/test';
 import useCategoryAdd from './category-add.hook';
 import styles from './category-add.module.scss';
 
@@ -19,6 +20,7 @@ const CategoryAddButton = ({ className }: TProps) => {
   return (
     <button
       className={`${styles.CategoryAddButton} ${className ?? ''}`}
+      data-testid={TEST_ID.category.addButton}
       onClick={handleCategoryAddButtonClick}
     >
       ➕ 카테고리 추가

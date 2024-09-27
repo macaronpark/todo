@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { Category } from '@entities/category';
 
+import { TEST_ID } from '@shared/test';
+
 import useCategoryListShow from './category-list.hook';
 import styles from './category-list.module.scss';
 
@@ -18,7 +20,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className={styles.CategoryList}>
+    <ol className={styles.CategoryList} data-testid={TEST_ID.category.list}>
       {categoryList.map((category) => (
         <Category
           key={category.id}
@@ -28,7 +30,7 @@ const CategoryList = () => {
           isSelected={selectedCategory?.id === category.id}
         />
       ))}
-    </div>
+    </ol>
   );
 };
 
