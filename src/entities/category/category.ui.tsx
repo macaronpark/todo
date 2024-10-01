@@ -1,19 +1,18 @@
-import type { TCategory } from './category.type';
 import styles from './category.module.scss';
 
-type TProps = TCategory & {
+type TProps = {
+  id: number;
+  newTitle: string;
   isSelected: boolean;
   onClick: () => void;
 };
 
-const Category = ({ id, title, isSelected, onClick }: TProps) => {
+const Category = ({ id, newTitle, isSelected, onClick }: TProps) => {
   return (
-    <li className={styles.Category}>
-      <button
-        className={isSelected ? styles.selected : ''}
-        onClick={onClick}
-      >{`🟰 ${title}(#${id})`}</button>
-    </li>
+    <button
+      className={`${styles.Category} ${isSelected ? styles.selected : ''}`}
+      onClick={onClick}
+    >{`🟰 ${newTitle}(#${id})`}</button>
   );
 };
 
