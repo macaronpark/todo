@@ -41,16 +41,3 @@ export const openDB = (): Promise<IDBDatabase> => {
     };
   });
 };
-
-const getObjectStore = ({
-  db,
-  storeName,
-  transactionMode,
-}: {
-  db: IDBDatabase;
-  storeName: EStoreName;
-  transactionMode: ETransactionMode;
-}) => {
-  const transaction = db.transaction(storeName, transactionMode);
-  return transaction.objectStore(storeName);
-};
