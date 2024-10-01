@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import { CategoryUpdateInput } from '@features/category-update';
 
@@ -17,8 +17,6 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
   const { editingCategoryId, setEditingCategoryId } = useCategoryContext();
   const isEditing = editingCategoryId === id;
 
-  const [newTitle, setNewTitle] = useState(title);
-
   const handleStartEditing = useCallback(() => {
     setEditingCategoryId(id);
   }, [id]);
@@ -33,14 +31,12 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
         <CategoryUpdateInput
           id={id}
           title={title}
-          newTitle={newTitle}
-          setNewTitle={setNewTitle}
           onEndEditing={handleEndEditing}
         />
       ) : (
         <Category
           id={id}
-          newTitle={newTitle}
+          title={title}
           isSelected={isSelected}
           onClick={onClick}
         />

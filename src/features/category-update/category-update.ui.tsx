@@ -1,21 +1,15 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import useCategoryUpdate from './category-update.hook';
 
 type TProps = {
   id: number;
   title: string;
-  newTitle: string;
-  setNewTitle: React.Dispatch<React.SetStateAction<string>>;
   onEndEditing: () => void;
 };
 
-const CategoryUpdateInput = ({
-  id,
-  title,
-  newTitle,
-  setNewTitle,
-  onEndEditing,
-}: TProps) => {
+const CategoryUpdateInput = ({ id, title, onEndEditing }: TProps) => {
+  const [newTitle, setNewTitle] = useState(title);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputRef = useCallback((input: HTMLInputElement) => {
