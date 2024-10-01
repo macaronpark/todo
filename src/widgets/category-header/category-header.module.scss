@@ -25,6 +25,7 @@ $padding: 2px 4px;
 
   & > input {
     width: 100%;
+    max-width: 240px;
     height: $minHeight;
     font-size: $fontSize;
     font-weight: $fontWeight;
