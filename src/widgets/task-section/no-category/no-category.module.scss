@@ -1,8 +1,6 @@
-@import '../task-section.mixin.scss';
-
 .NoCategory {
   @include flex(center, center, column);
-  @include backgroundStyle;
+  flex: 1;
   gap: 16px;
 
   .image {

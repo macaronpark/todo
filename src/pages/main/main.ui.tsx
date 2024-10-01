@@ -1,5 +1,6 @@
 import { Sidebar } from '@widgets/sidebar';
 import { CategoryList } from '@widgets/category-list';
+import { CategoryHeader } from '@widgets/category-header';
 import { TaskSection } from '@widgets/task-section';
 import { TaskList } from '@widgets/task-list';
 import { TaskDetail } from '@widgets/task-detail';
@@ -23,6 +24,10 @@ const MainPage = () => {
           selectedCategoryId={selectedCategory?.id}
           selectedCategoryTitle={selectedCategory?.title}
         >
+          <CategoryHeader
+            selectedCategoryId={selectedCategory?.id}
+            selectedCategoryTitle={selectedCategory?.title}
+          />
           <TaskList categoryId={selectedCategory?.id} />
         </TaskSection>
         {selectedTask && (

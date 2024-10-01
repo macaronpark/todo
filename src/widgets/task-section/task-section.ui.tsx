@@ -1,5 +1,3 @@
-import { CategoryHeader } from '@features/category-header-show';
-import { CategoryDeleteButton } from '@features/category-delete';
 import { TaskAddInputBar } from '@features/task-add';
 
 import { NoCategory } from './no-category';
@@ -16,27 +14,18 @@ const TaskSection = ({
   selectedCategoryTitle,
   children,
 }: TProps) => {
-  if (!selectedCategoryId) {
-    return <NoCategory />;
+  if (!selectedCategoryId || !selectedCategoryTitle) {
+    return (
+      <div className={styles.TaskSection}>
+        <NoCategory />
+      </div>
+    );
   }
 
   return (
     <div className={styles.TaskSection}>
-      {selectedCategoryId && (
-        <>
-          <CategoryHeader
-            categoryId={selectedCategoryId}
-            categoryTitle={selectedCategoryTitle}
-          >
-            <CategoryDeleteButton
-              categoryId={selectedCategoryId}
-              categoryTitle={selectedCategoryTitle}
-            />
-          </CategoryHeader>
-          {children}
-          <TaskAddInputBar />
-        </>
-      )}
+      {children}
+      <TaskAddInputBar />
     </div>
   );
 };
