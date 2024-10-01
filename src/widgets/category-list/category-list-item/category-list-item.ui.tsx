@@ -5,6 +5,7 @@ import { CategoryUpdateInput } from '@features/category-update';
 import { Category, useCategoryContext } from '@entities/category';
 
 import styles from './category-list-item.module.scss';
+import { TEST_ID } from '@shared/test';
 
 type TProps = {
   id: number;
@@ -26,7 +27,11 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
   }, []);
 
   return (
-    <li className={styles.CategoryListItem} onDoubleClick={handleStartEditing}>
+    <li
+      className={styles.CategoryListItem}
+      onDoubleClick={handleStartEditing}
+      data-testid={TEST_ID.category.listItem}
+    >
       {isEditing ? (
         <CategoryUpdateInput
           id={id}

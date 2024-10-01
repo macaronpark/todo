@@ -4,6 +4,7 @@ import { CategoryUpdateInput } from '@features/category-update';
 import { CategoryDeleteButton } from '@features/category-delete';
 
 import styles from './category-header.module.scss';
+import { TEST_ID } from '@shared/test';
 
 type TProps = {
   selectedCategoryId?: number;
@@ -21,7 +22,11 @@ const CategoryHeader = ({
   if (!selectedCategoryId || !selectedCategoryTitle) return null;
 
   return (
-    <div className={styles.CategoryHeader} onClick={handleStartEditing}>
+    <div
+      className={styles.CategoryHeader}
+      onClick={handleStartEditing}
+      data-testid={TEST_ID.category.header}
+    >
       {isEditing ? (
         <CategoryUpdateInput
           id={selectedCategoryId}

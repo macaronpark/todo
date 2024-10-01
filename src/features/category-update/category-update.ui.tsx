@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import useCategoryUpdate from './category-update.hook';
+import { TEST_ID } from '@shared/test';
 
 type TProps = {
   id: number;
@@ -53,6 +54,7 @@ const CategoryUpdateInput = ({ id, title, onEndEditing }: TProps) => {
       onChange={(e) => setNewTitle(e.target.value)}
       onKeyDown={handleKeyDown}
       onBlur={handleInputBlur}
+      data-testid={TEST_ID.category.updateInput}
     />
   );
 };
