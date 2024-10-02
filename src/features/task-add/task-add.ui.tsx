@@ -1,3 +1,5 @@
+import { PlusIcon } from '@heroicons/react/20/solid';
+
 import { useCategoryContext } from '@entities/category';
 
 import useTaskAdd from './task-add.hook';
@@ -41,7 +43,7 @@ const TaskAddInputBar = () => {
   return (
     <div className={styles.TaskAddInputBar}>
       <div className={styles.inputWrapper}>
-        <div className={styles.icon}>➕</div>
+        <PlusIcon className={styles.icon} />
         <input
           type="text"
           placeholder="태스크 추가"

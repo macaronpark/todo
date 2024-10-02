@@ -1,3 +1,5 @@
+import { Bars3Icon } from '@heroicons/react/20/solid';
+
 import styles from './category.module.scss';
 
 type TProps = {
@@ -12,7 +14,10 @@ const Category = ({ id, title, isSelected, onClick }: TProps) => {
     <button
       className={`${styles.Category} ${isSelected ? styles.selected : ''}`}
       onClick={onClick}
-    >{`🟰 ${title}(#${id})`}</button>
+    >
+      <Bars3Icon className={styles.icon} />
+      <span>{`${title}(#${id})`}</span>
+    </button>
   );
 };
 
