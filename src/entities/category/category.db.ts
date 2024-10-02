@@ -38,13 +38,18 @@ export const addCategoryToDB = async (
   });
 };
 
-export const updateCategoryToDB = async (category: TCategory) => {
+export const updateCategoryToDB = async (newCategory: TCategory) => {
   const db = await openDB();
   const store = db
     .transaction(EStoreName.categoryList, ETransactionMode.readwrite)
     .objectStore(EStoreName.categoryList);
 
-  return store.put(category);
+  return new Promise<TCategory>((resolve, reject) => {
+    const request = store.put(newCategory);
+
+    request.onsuccess = () => resolve(newCategory);
+    request.onerror = () => reject(request.error);
+  });
 };
 
 export const deleteCategoryFromDB = async (categoryId: number) => {

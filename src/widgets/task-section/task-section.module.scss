@@ -1,6 +1,6 @@
-@import './task-section.mixin.scss';
-
 .TaskSection {
   @include flex(start, stretch, column);
-  @include backgroundStyle;
+  flex: 1;
+  background-color: $purple;
+  border-top-left-radius: 10px;
 }

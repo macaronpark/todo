@@ -1,0 +1,35 @@
+$fontSize: 24px;
+$fontWeight: 600;
+$minHeight: 40px;
+$padding: 2px 4px;
+
+.CategoryHeader {
+  @include flex(space-between, stretch);
+  padding: 40px 40px 0;
+  gap: 40px;
+
+  .titleButton {
+    align-content: center;
+    margin-right: 16px;
+    padding: 2px 4px;
+    min-height: $minHeight;
+    border-radius: 8px;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $white;
+
+    &:hover {
+      background-color: #00000020;
+    }
+  }
+
+  & > input {
+    width: 100%;
+    max-width: 240px;
+    height: $minHeight;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    padding: $padding;
+    border-radius: 8px;
+  }
+}

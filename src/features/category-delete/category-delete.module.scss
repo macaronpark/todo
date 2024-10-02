@@ -2,6 +2,8 @@
   font-size: 14px;
   font-weight: 600;
   color: $white;
+  min-width: fit-content;
+  padding: 0 4px;
 
   &:hover {
     color: $lightgray;

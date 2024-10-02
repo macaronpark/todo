@@ -6,7 +6,8 @@ import {
 import { useCallback } from 'react';
 
 const useCategoryAdd = () => {
-  const { setCategoryList, setSelectedCategory } = useCategoryContext();
+  const { setCategoryList, setSelectedCategory, setEditingCategoryId } =
+    useCategoryContext();
 
   const addCategory = async () => {
     try {
@@ -23,16 +24,15 @@ const useCategoryAdd = () => {
     }
   };
 
-  const handleSuccess = useCallback(
-    (category: TCategory) => {
-      setCategoryList((prev) => [...prev, category]);
-      setSelectedCategory({
-        id: category.id,
-        title: category.title,
-      });
-    },
-    [setCategoryList, setSelectedCategory]
-  );
+  const handleSuccess = useCallback((category: TCategory) => {
+    setCategoryList((prev) => [...prev, category]);
+    setSelectedCategory({
+      id: category.id,
+      title: category.title,
+    });
+
+    setEditingCategoryId(category.id);
+  }, []);
 
   return { addCategory };
 };

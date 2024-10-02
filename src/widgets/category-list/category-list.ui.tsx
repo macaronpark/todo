@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 
-import { Category } from '@entities/category';
-
 import { TEST_ID } from '@shared/test';
 
+import { CategoryListItem } from './category-list-item';
 import useCategoryListShow from './category-list.hook';
 import styles from './category-list.module.scss';
 
@@ -22,7 +21,7 @@ const CategoryList = () => {
   return (
     <ol className={styles.CategoryList} data-testid={TEST_ID.category.list}>
       {categoryList.map((category) => (
-        <Category
+        <CategoryListItem
           key={category.id}
           id={category.id}
           title={category.title}
