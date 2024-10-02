@@ -1,5 +1,6 @@
 .CategoryAddButton {
-  @include flex(flex-start);
+  @include flex(flex-start, center);
+  gap: 4px;
   width: calc(100% - 20px);
   border-radius: 8px;
   background-color: $white;
@@ -8,5 +9,10 @@
 
   &:hover {
     background-color: $lightgray;
+  }
+
+  .icon {
+    width: 20px;
+    min-width: 20px;
   }
 }

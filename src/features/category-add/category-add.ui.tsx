@@ -1,4 +1,7 @@
+import { PlusIcon } from '@heroicons/react/20/solid';
+
 import { TEST_ID } from '@shared/test';
+
 import useCategoryAdd from './category-add.hook';
 import styles from './category-add.module.scss';
 
@@ -23,7 +26,8 @@ const CategoryAddButton = ({ className }: TProps) => {
       data-testid={TEST_ID.category.addButton}
       onClick={handleCategoryAddButtonClick}
     >
-      ➕ 카테고리 추가
+      <PlusIcon className={styles.icon} />
+      카테고리 추가
     </button>
   );
 };

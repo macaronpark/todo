@@ -11,11 +11,11 @@ $detailWidth: 360px;
   @include flex(start, stretch, column);
   width: $detailWidth;
   min-width: $detailWidth;
-
   background-color: $white;
-  border-left: 1px solid $black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   .toolbar {
+    @include flex(flex-end, center);
     text-align: right;
     padding: 8px 16px;
   }

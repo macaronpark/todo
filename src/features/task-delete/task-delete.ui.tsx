@@ -1,4 +1,7 @@
+import { TrashIcon } from '@heroicons/react/24/outline';
+
 import useTaskDelete from './task-delete.hook';
+
 import styles from './task-delete.module.scss';
 
 type TProps = {
@@ -21,10 +24,10 @@ const TaskDeleteButton = ({ id }: TProps) => {
   return (
     <button
       className={styles.TaskDeleteButton}
-      title="태스크 삭제 버튼"
+      title="태스크 삭제"
       onClick={handleTaskDeleteButtonClick}
     >
-      🗑️
+      <TrashIcon className={styles.icon} />
     </button>
   );
 };

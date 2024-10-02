@@ -1,11 +1,17 @@
 .CategoryDeleteButton {
+  @include flex;
   font-size: 14px;
   font-weight: 600;
-  color: $white;
-  min-width: fit-content;
-  padding: 0 4px;
+  padding: 4px;
+  border-radius: 8px;
 
   &:hover {
-    color: $lightgray;
+    background-color: #00000020;
+  }
+
+  .icon {
+    width: 20px;
+    min-width: 20px;
+    color: $white;
   }
 }
