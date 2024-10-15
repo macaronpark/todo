@@ -9,6 +9,7 @@
     - 개발 히스토리: [macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls)
   - ⬜ [Feature-Sliced Design](https://feature-sliced.design/) 학습과 적용
   - ⬜ [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 학습과 적용
+  - ⬜ Node.js, Express 학습과 적용
 
 <br />
 
@@ -20,23 +21,32 @@
 
 ### 설치 방법
 
-1. 레포지토리 클론: `git@github.com:macaronpark/todo.git`
-2. 의존성 설치: `pnpm install`
-3. 개발 서버 실행: `pnpm dev`
+- 클라이언트
+
+  1. 레포지토리 클론: `git@github.com:macaronpark/todo.git`
+  2. client 경로로 이동: `cd client`
+  3. 의존성 설치: `pnpm install`
+  4. 개발 서버 실행: `pnpm dev`
+
+- 서버
+
+  1. 작성 예정
 
 <br />
 
 ## 폴더 구조
 
-- 📂 `devlog`: 학습 기록
-- 📂 `src`
-  - 📂 `app`
-    - 📄 `index.tsx`: 앱 진입점
-    - ...
-  - 📂 `pages`: 화면
-  - 📂 `widgets`: 화면 구성 인터페이스
-  - 📂 `features`: 비즈니스 액션
-  - 📂 `entities`: 데이터 엔티티
-  - 📂 `shared`: 앱 전반에서 사용하는 리소스
+- 📂 `_devlog`: 학습 기록
+- 📂 `client`
+  - 📂 `src`
+    - 📂 `app`
+      - 📄 `index.tsx`: 앱 진입점
+      - ...
+    - 📂 `pages`: 화면
+    - 📂 `widgets`: 화면 구성 인터페이스
+    - 📂 `features`: 비즈니스 액션
+    - 📂 `entities`: 데이터 엔티티
+    - 📂 `shared`: 앱 전반에서 사용하는 리소스
+- 📂 `server`
 
 <br />
