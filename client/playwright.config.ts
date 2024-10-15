@@ -14,6 +14,11 @@ export default defineConfig({
     timezoneId: 'Asia/Seoul',
     headless: false,
   },
+  webServer: {
+    command: 'pnpm dev',
+    url: 'http://localhost:5173',
+    reuseExistingServer: !process.env.CI,
+  },
   projects: [
     {
       name: 'chromium',
