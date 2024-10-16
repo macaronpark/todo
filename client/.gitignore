@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # Playwright
-/test-results/
-/playwright-report/
+/e2e/.cache/
 /blob-report/
-/playwright/.cache/
+/e2e/test-report/
+/e2e/test-results/
