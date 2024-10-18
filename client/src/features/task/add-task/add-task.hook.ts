@@ -5,7 +5,7 @@ import {
   useTaskContext,
 } from '@entities/task';
 
-const useTaskAdd = () => {
+export const useAddTask = () => {
   const { taskList, setTaskList } = useTaskContext();
 
   const addTask = async ({ newTask }: { newTask: TNewTask }) => {
@@ -29,5 +29,3 @@ const useTaskAdd = () => {
     addTask,
   };
 };
-
-export default useTaskAdd;

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
-import { CategoryUpdateInput } from '@features/category-update';
-import { CategoryDeleteButton } from '@features/category-delete';
+import { UpdateCategoryInput } from '@features/category/update-category';
+import { DeleteCategoryButton } from '@features/category/delete-category';
 
 import styles from './category-header.module.scss';
 import { TEST_ID } from '@shared/test';
@@ -28,7 +28,7 @@ const CategoryHeader = ({
       data-testid={TEST_ID.category.header}
     >
       {isEditing ? (
-        <CategoryUpdateInput
+        <UpdateCategoryInput
           id={selectedCategoryId}
           title={selectedCategoryTitle}
           onEndEditing={handleEndEditing}
@@ -36,7 +36,7 @@ const CategoryHeader = ({
       ) : (
         <button className={styles.titleButton}>{selectedCategoryTitle}</button>
       )}
-      <CategoryDeleteButton
+      <DeleteCategoryButton
         categoryId={selectedCategoryId}
         categoryTitle={selectedCategoryTitle}
       />

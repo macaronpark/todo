@@ -1,5 +1,5 @@
-import { TaskDetailCloseButton } from '@features/task-detail-close';
-import { TaskDeleteButton } from '@features/task-delete';
+import { CloseTaskDetailButton } from '@features/task/close-task-detail';
+import { DeleteTaskButton } from '@features/task/delete-task';
 
 import { TTask } from '@entities/task';
 
@@ -20,7 +20,7 @@ const TaskDetail = ({
   return (
     <div className={styles.TaskDetail}>
       <div className={styles.toolbar}>
-        <TaskDetailCloseButton />
+        <CloseTaskDetailButton />
       </div>
       <div className={styles.taskWrapper}>
         <div className={styles.titleWrapper}>
@@ -46,7 +46,7 @@ const TaskDetail = ({
         <div className={styles.createdAt}>{`${formatDateString(
           createdAt
         )}에 생성됨`}</div>
-        <TaskDeleteButton id={id} />
+        <DeleteTaskButton id={id} />
       </div>
     </div>
   );

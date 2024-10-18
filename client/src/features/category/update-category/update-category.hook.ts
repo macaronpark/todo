@@ -6,7 +6,7 @@ import {
   useCategoryContext,
 } from '@entities/category';
 
-const useCategoryUpdate = () => {
+export const useUpdateCategory = () => {
   const { setCategoryList, setSelectedCategory } = useCategoryContext();
 
   const updateCategory = async ({
@@ -42,5 +42,3 @@ const useCategoryUpdate = () => {
     updateCategory,
   };
 };
-
-export default useCategoryUpdate;

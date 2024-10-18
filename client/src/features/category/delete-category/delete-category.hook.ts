@@ -1,6 +1,6 @@
 import { deleteCategoryFromDB, useCategoryContext } from '@entities/category';
 
-const useCategoryDelete = () => {
+export const useDeleteCategory = () => {
   const { categoryList, setCategoryList, setSelectedCategory } =
     useCategoryContext();
 
@@ -37,5 +37,3 @@ const useCategoryDelete = () => {
 
   return { deleteCategory };
 };
-
-export default useCategoryDelete;

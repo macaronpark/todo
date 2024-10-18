@@ -1,6 +1,6 @@
 import { deleteTaskFromDB, useTaskContext } from '@entities/task';
 
-const useTaskDelete = () => {
+export const useDeleteTask = () => {
   const { setTaskList, setSelectedTask } = useTaskContext();
 
   const deleteTask = async (taskId: number) => {
@@ -23,5 +23,3 @@ const useTaskDelete = () => {
 
   return { deleteTask };
 };
-
-export default useTaskDelete;

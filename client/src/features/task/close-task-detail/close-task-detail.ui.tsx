@@ -2,9 +2,9 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 
 import { useTaskContext } from '@entities/task';
 
-import styles from './task-detail-close.module.scss';
+import styles from './close-task-detail.module.scss';
 
-const TaskDetailCloseButton = () => {
+export const CloseTaskDetailButton = () => {
   const { setSelectedTask } = useTaskContext();
 
   const handleClose = () => {
@@ -21,5 +21,3 @@ const TaskDetailCloseButton = () => {
     </button>
   );
 };
-
-export default TaskDetailCloseButton;
