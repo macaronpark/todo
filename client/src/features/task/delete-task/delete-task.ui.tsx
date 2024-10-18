@@ -1,15 +1,15 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-import useTaskDelete from './task-delete.hook';
+import { useDeleteTask } from './delete-task.hook';
 
-import styles from './task-delete.module.scss';
+import styles from './delete-task.module.scss';
 
 type TProps = {
   id: number;
 };
 
-const TaskDeleteButton = ({ id }: TProps) => {
-  const { deleteTask } = useTaskDelete();
+export const DeleteTaskButton = ({ id }: TProps) => {
+  const { deleteTask } = useDeleteTask();
 
   const handleTaskDeleteButtonClick = async () => {
     try {
@@ -31,5 +31,3 @@ const TaskDeleteButton = ({ id }: TProps) => {
     </button>
   );
 };
-
-export default TaskDeleteButton;

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { CategoryUpdateInput } from '@features/category-update';
+import { UpdateCategoryInput } from '@features/category/update-category';
 
 import { Category, useCategoryContext } from '@entities/category';
 
@@ -33,7 +33,7 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
       data-testid={TEST_ID.category.listItem}
     >
       {isEditing ? (
-        <CategoryUpdateInput
+        <UpdateCategoryInput
           id={id}
           title={title}
           onEndEditing={handleEndEditing}

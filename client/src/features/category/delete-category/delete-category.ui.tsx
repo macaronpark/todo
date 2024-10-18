@@ -1,16 +1,16 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-import useCategoryDelete from './category-delete.hook';
+import { useDeleteCategory } from './delete-category.hook';
 
-import styles from './category-delete.module.scss';
+import styles from './delete-category.module.scss';
 
 type TProps = {
   categoryId: number;
   categoryTitle?: string;
 };
 
-const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
-  const { deleteCategory } = useCategoryDelete();
+export const DeleteCategoryButton = ({ categoryId, categoryTitle }: TProps) => {
+  const { deleteCategory } = useDeleteCategory();
 
   const handleCategoryDeleteButtonClick = () => {
     if (!categoryId) return;
@@ -26,7 +26,7 @@ const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
 
   return (
     <button
-      className={styles.CategoryDeleteButton}
+      className={styles.DeleteCategoryButton}
       onClick={handleCategoryDeleteButtonClick}
       title="카테고리 삭제"
     >
@@ -34,5 +34,3 @@ const CategoryDeleteButton = ({ categoryId, categoryTitle }: TProps) => {
     </button>
   );
 };
-
-export default CategoryDeleteButton;

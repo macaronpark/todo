@@ -2,8 +2,8 @@ export const TEST_ID = {
   category: {
     list: 'category-list',
     listItem: 'category-list-item',
-    addButton: 'category-add-button',
-    updateInput: 'category-update-input',
+    addButton: 'add-category-button',
+    updateInput: 'update-category-input',
     header: 'category-header',
   },
 };

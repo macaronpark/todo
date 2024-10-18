@@ -2,17 +2,17 @@ import { PlusIcon } from '@heroicons/react/20/solid';
 
 import { TEST_ID } from '@shared/test';
 
-import useCategoryAdd from './category-add.hook';
-import styles from './category-add.module.scss';
+import useCategoryAdd from './add-category.hook';
+import styles from './add-category.module.scss';
 
 type TProps = {
   className?: string;
 };
 
-const CategoryAddButton = ({ className }: TProps) => {
+export const AddCategoryButton = ({ className }: TProps) => {
   const { addCategory } = useCategoryAdd();
 
-  const handleCategoryAddButtonClick = async () => {
+  const handleAddCategoryButtonClick = async () => {
     try {
       await addCategory();
     } catch (error) {
@@ -22,14 +22,13 @@ const CategoryAddButton = ({ className }: TProps) => {
 
   return (
     <button
-      className={`${styles.CategoryAddButton} ${className ?? ''}`}
+      className={`${styles.AddCategoryButton} ${className ?? ''}`}
       data-testid={TEST_ID.category.addButton}
-      onClick={handleCategoryAddButtonClick}
+      onClick={handleAddCategoryButtonClick}
     >
+      handleAddCategoryButtonClick
       <PlusIcon className={styles.icon} />
       카테고리 추가
     </button>
   );
 };
-
-export default CategoryAddButton;

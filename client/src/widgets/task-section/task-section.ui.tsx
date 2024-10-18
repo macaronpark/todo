@@ -1,4 +1,4 @@
-import { TaskAddInputBar } from '@features/task-add';
+import { AddTaskInputBar } from '@features/task/add-task';
 
 import { NoCategory } from './no-category';
 import styles from './task-section.module.scss';
@@ -25,7 +25,7 @@ const TaskSection = ({
   return (
     <div className={styles.TaskSection}>
       {children}
-      <TaskAddInputBar />
+      <AddTaskInputBar />
     </div>
   );
 };

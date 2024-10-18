@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
-import useCategoryUpdate from './category-update.hook';
+import { useUpdateCategory } from './update-category.hook';
 import { TEST_ID } from '@shared/test';
 
 type TProps = {
@@ -8,7 +8,7 @@ type TProps = {
   onEndEditing: () => void;
 };
 
-const CategoryUpdateInput = ({ id, title, onEndEditing }: TProps) => {
+export const UpdateCategoryInput = ({ id, title, onEndEditing }: TProps) => {
   const [newTitle, setNewTitle] = useState(title);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -27,7 +27,7 @@ const CategoryUpdateInput = ({ id, title, onEndEditing }: TProps) => {
     }
   };
 
-  const { updateCategory } = useCategoryUpdate();
+  const { updateCategory } = useUpdateCategory();
   const handleInputBlur = async () => {
     if (title === newTitle) {
       onEndEditing();
@@ -58,5 +58,3 @@ const CategoryUpdateInput = ({ id, title, onEndEditing }: TProps) => {
     />
   );
 };
-
-export default CategoryUpdateInput;

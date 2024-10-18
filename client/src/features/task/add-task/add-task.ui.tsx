@@ -2,12 +2,12 @@ import { PlusIcon } from '@heroicons/react/20/solid';
 
 import { useCategoryContext } from '@entities/category';
 
-import useTaskAdd from './task-add.hook';
-import styles from './task-add.module.scss';
+import { useAddTask } from './add-task.hook';
+import styles from './add-task.module.scss';
 
-const TaskAddInputBar = () => {
+export const AddTaskInputBar = () => {
   const { selectedCategory } = useCategoryContext();
-  const { addTask } = useTaskAdd();
+  const { addTask } = useAddTask();
 
   const handleInputKeyDown = async (
     e: React.KeyboardEvent<HTMLInputElement>
@@ -53,5 +53,3 @@ const TaskAddInputBar = () => {
     </div>
   );
 };
-
-export default TaskAddInputBar;
