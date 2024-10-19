@@ -1,6 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
-import { useUpdateCategory } from './update-category.hook';
+
 import { TEST_ID } from '@shared/test';
+
+import styles from './update-category.module.scss';
+import { useUpdateCategory } from './update-category.hook';
 
 type TProps = {
   id: number;
@@ -49,6 +52,7 @@ export const UpdateCategoryInput = ({ id, title, onEndEditing }: TProps) => {
 
   return (
     <input
+      className={styles.UpdateCategoryInput}
       ref={handleInputRef}
       value={newTitle}
       onChange={(e) => setNewTitle(e.target.value)}

@@ -26,7 +26,6 @@ export const AddCategoryButton = ({ className }: TProps) => {
       data-testid={TEST_ID.category.addButton}
       onClick={handleAddCategoryButtonClick}
     >
-      handleAddCategoryButtonClick
       <PlusIcon className={styles.icon} />
       카테고리 추가
     </button>

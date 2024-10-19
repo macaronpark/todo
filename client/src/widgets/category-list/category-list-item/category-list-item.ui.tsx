@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { UpdateCategoryInput } from '@features/category/update-category';
+import { CategoryTaskCount } from '@features/category/show-category-task-count';
 
 import { Category, useCategoryContext } from '@entities/category';
 
@@ -28,7 +29,9 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
 
   return (
     <li
-      className={styles.CategoryListItem}
+      className={`${styles.CategoryListItem} ${
+        isSelected ? styles.selected : ''
+      }`}
       onDoubleClick={handleStartEditing}
       data-testid={TEST_ID.category.listItem}
     >
@@ -39,13 +42,9 @@ const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
           onEndEditing={handleEndEditing}
         />
       ) : (
-        <Category
-          id={id}
-          title={title}
-          isSelected={isSelected}
-          onClick={onClick}
-        />
+        <Category id={id} title={title} onClick={onClick} />
       )}
+      <CategoryTaskCount categoryId={id} isSelected={isSelected} />
     </li>
   );
 };
