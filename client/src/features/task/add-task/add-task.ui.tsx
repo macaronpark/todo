@@ -4,6 +4,7 @@ import { useCategoryContext } from '@entities/category';
 
 import { useAddTask } from './add-task.hook';
 import styles from './add-task.module.scss';
+import { TEST_ID } from '@shared/test';
 
 export const AddTaskInputBar = () => {
   const { selectedCategory } = useCategoryContext();
@@ -41,7 +42,10 @@ export const AddTaskInputBar = () => {
   };
 
   return (
-    <div className={styles.TaskAddInputBar}>
+    <div
+      className={styles.TaskAddInputBar}
+      data-testid={TEST_ID.task.addInputBar}
+    >
       <div className={styles.inputWrapper}>
         <PlusIcon className={styles.icon} />
         <input

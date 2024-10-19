@@ -1,5 +1,6 @@
-import { test, type Locator, type Page } from '@playwright/test';
-import { TEST_ID } from '../src/shared/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
+
+import { TEST_ID } from '@shared/test';
 
 export const mainPageTest = test.extend<{ mainPage: MainPage }>({
   mainPage: async ({ page }, use) => {
@@ -12,42 +13,57 @@ export class MainPage {
   readonly page: Page;
   readonly categoryList: Locator;
   readonly categoryAddButton: Locator;
-
-  private lastCategory: Locator;
-  readonly lastCategoryUpdateInput: Locator;
-  readonly lastCategoryButton: Locator;
-
-  private categoryHeader: Locator;
-  readonly categoryHeaderUpdateInput: Locator;
-  readonly categoryHeaderButton: Locator;
+  readonly categoryHeader: Locator;
+  readonly addTaskInputBar: Locator;
 
   constructor(page: Page) {
     this.page = page;
-
-    const testId = TEST_ID.category;
-
-    this.categoryList = page.getByTestId(testId.list);
-    this.categoryAddButton = page.getByTestId(testId.addButton).nth(0);
-
-    this.lastCategory = page.getByTestId(testId.listItem).nth(-1);
-    this.lastCategoryUpdateInput = this.lastCategory.locator('input');
-    this.lastCategoryButton = this.lastCategory.locator('button');
-
-    this.categoryHeader = page.getByTestId(testId.header);
-    this.categoryHeaderUpdateInput = this.categoryHeader.locator('input');
-    this.categoryHeaderButton = this.categoryHeader.locator('button');
+    this.categoryList = page.getByTestId(TEST_ID.category.list);
+    this.categoryAddButton = page
+      .getByTestId(TEST_ID.category.addButton)
+      .nth(0);
+    this.categoryHeader = page.getByTestId(TEST_ID.category.header);
+    this.addTaskInputBar = page.getByTestId(TEST_ID.task.addInputBar);
   }
 
   async goto() {
     await this.page.goto('/');
   }
 
-  async addCategory() {
+  async addCategory({ title }: { title: string }): Promise<Locator> {
     await this.categoryAddButton.click();
+
+    const categoryInput = this.page
+      .getByTestId(TEST_ID.category.listItem)
+      .nth(-1)
+      .locator('input');
+
+    await categoryInput.fill(title);
+    await categoryInput.press('Enter');
+
+    const category = this.page
+      .getByTestId(TEST_ID.category.listItem)
+      .filter({ hasText: title });
+
+    return category;
   }
 
-  async updateCategoryTitle(title: string) {
-    await this.lastCategoryUpdateInput.fill(title);
-    await this.lastCategoryUpdateInput.press('Enter');
+  async addTask({
+    categoryTitle,
+    taskTitle,
+  }: {
+    categoryTitle: string;
+    taskTitle: string;
+  }) {
+    const category = this.page
+      .getByTestId(TEST_ID.category.listItem)
+      .filter({ hasText: categoryTitle });
+
+    await category.click();
+    await expect(this.categoryHeader).toHaveText(categoryTitle);
+
+    const addTaskInput = this.addTaskInputBar.locator('input');
+    await addTaskInput.fill(taskTitle);
+    await addTaskInput.press('Enter');
   }
 }

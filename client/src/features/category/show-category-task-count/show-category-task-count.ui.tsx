@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getTaskListFromDB, useTaskContext } from '@entities/task';
 
 import styles from './show-category-task-count.module.scss';
+import { TEST_ID } from '@shared/test';
 
 type TProps = {
   categoryId: number;
@@ -40,5 +41,12 @@ export const CategoryTaskCount = ({ categoryId, isSelected }: TProps) => {
   // 상태 관리 방식을 변경할 예정이어서 우선은 이렇게 구현함.
   const count = isSelected ? taskList.length : taskCount;
 
-  return <div className={styles.CategoryTaskCount}>{count}</div>;
+  return (
+    <div
+      className={styles.CategoryTaskCount}
+      data-testid={TEST_ID.category.taskCount}
+    >
+      {count}
+    </div>
+  );
 };
