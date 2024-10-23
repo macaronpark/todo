@@ -1,37 +1,39 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 
-const categoryList = [];
+const categoryList = [
+  { id: '1', name: '카테고리1' },
+  { id: '2', name: '카테고리2' },
+];
 
-// todo: client에서 react-query + axios로 api 호출해보기
-router.get("/categories", function (req, res, next) {
+router.get('/', function (req, res, next) {
   res.json(categoryList);
 });
 
-router.get("/categories/:categoryId", function (req, res, next) {
+router.get('/:categoryId', function (req, res, next) {
   const categoryId = req.params.categoryId;
   const category = categoryList.find((category) => category.id === categoryId);
 
   if (!category) {
-    res.status(404).json({ message: "Category not found" });
+    res.status(404).json({ message: 'Category not found' });
     return;
   }
 
   res.json(category);
 });
 
-router.post("/categories", function (req, res, next) {
+router.post('/', function (req, res, next) {
   const newCategory = req.body;
   categoryList.push(newCategory);
   res.status(201).json(newCategory);
 });
 
-router.put("/categories/:categoryId", function (req, res, next) {
+router.put('/:categoryId', function (req, res, next) {
   const categoryId = req.params.categoryId;
   const category = categoryList.find((category) => category.id === categoryId);
 
   if (!category) {
-    res.status(404).json({ message: "Category not found" });
+    res.status(404).json({ message: 'Category not found' });
     return;
   }
 
@@ -41,12 +43,12 @@ router.put("/categories/:categoryId", function (req, res, next) {
   res.json(updatedCategory);
 });
 
-router.delete("/categories/:categoryId", function (req, res, next) {
+router.delete('/:categoryId', function (req, res, next) {
   const categoryId = req.params.categoryId;
   const category = categoryList.find((category) => category.id === categoryId);
 
   if (!category) {
-    res.status(404).json({ message: "Category not found" });
+    res.status(404).json({ message: 'Category not found' });
     return;
   }
 
