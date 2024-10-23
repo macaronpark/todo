@@ -9,8 +9,21 @@ import { useCategoryContext } from '@entities/category';
 import { useTaskContext } from '@entities/task';
 
 import styles from './main.module.scss';
+import { useQuery } from '@tanstack/react-query';
+import { fetchCategories } from './main.api';
 
 const MainPage = () => {
+  const {
+    data: categoryList,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: fetchCategories,
+  });
+
+  console.log(categoryList, isPending, isError);
+
   const { selectedCategory } = useCategoryContext();
   const { selectedTask } = useTaskContext();
 
