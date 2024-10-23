@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Playwright
-/e2e/.cache/
-/blob-report/
-/e2e/test-report/
-/e2e/test-results/
+# Client/e2e
+client/e2e/.cache/
+client/e2e/test-report/
+client/e2e/test-results/
+

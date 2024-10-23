@@ -22,15 +22,8 @@
 ### 설치 방법
 
 1. 레포지토리 클론: `git@github.com:macaronpark/todo.git`
-2. 설치
-   - 서버
-     - server 경로로 이동: `cd server`
-     - 의존성 설치: `pnpm install`
-     - 개발 서버 실행: `pnpm dev`
-   - 클라이언트
-     - client 경로로 이동: `cd client`
-     - 의존성 설치: `pnpm install`
-     - 개발 서버 실행: `pnpm dev`
+2. 의존성 설치: `pnpm install`
+3. 개발 서버 실행: `pnpm dev`
 
 <br />
 
