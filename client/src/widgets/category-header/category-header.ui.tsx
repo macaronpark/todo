@@ -3,23 +3,18 @@ import { useCallback, useState } from 'react';
 import { UpdateCategoryInput } from '@features/category/update-category';
 import { DeleteCategoryButton } from '@features/category/delete-category';
 
-import styles from './category-header.module.scss';
 import { TEST_ID } from '@shared/test';
+import { useTodoStore } from '@shared/store';
 
-type TProps = {
-  selectedCategoryId?: number;
-  selectedCategoryTitle?: string;
-};
+import styles from './category-header.module.scss';
 
-const CategoryHeader = ({
-  selectedCategoryId,
-  selectedCategoryTitle,
-}: TProps) => {
+const CategoryHeader = () => {
   const [isEditing, setIsEditing] = useState(false);
   const handleStartEditing = useCallback(() => setIsEditing(true), []);
   const handleEndEditing = useCallback(() => setIsEditing(false), []);
 
-  if (!selectedCategoryId || !selectedCategoryTitle) return null;
+  const selectedCategory = useTodoStore((state) => state.selectedCategory);
+  if (!selectedCategory) return null;
 
   return (
     <div
@@ -29,16 +24,16 @@ const CategoryHeader = ({
     >
       {isEditing ? (
         <UpdateCategoryInput
-          id={selectedCategoryId}
-          title={selectedCategoryTitle}
+          id={selectedCategory.id}
+          title={selectedCategory.title}
           onEndEditing={handleEndEditing}
         />
       ) : (
-        <button className={styles.titleButton}>{selectedCategoryTitle}</button>
+        <button className={styles.titleButton}>{selectedCategory.title}</button>
       )}
       <DeleteCategoryButton
-        categoryId={selectedCategoryId}
-        categoryTitle={selectedCategoryTitle}
+        categoryId={selectedCategory.id}
+        categoryTitle={selectedCategory.title}
       />
     </div>
   );

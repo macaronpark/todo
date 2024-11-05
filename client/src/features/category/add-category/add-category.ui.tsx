@@ -1,23 +1,48 @@
 import { PlusIcon } from '@heroicons/react/20/solid';
 
 import { TEST_ID } from '@shared/test';
+import { useTodoStore } from '@shared/store';
 
-import useCategoryAdd from './add-category.hook';
+import { useAddCategory } from './add-category.hook';
 import styles from './add-category.module.scss';
 
 type TProps = {
   className?: string;
+  refetchCategoryList: () => void;
 };
 
-export const AddCategoryButton = ({ className }: TProps) => {
-  const { addCategory } = useCategoryAdd();
+export const AddCategoryButton = ({
+  className,
+  refetchCategoryList,
+}: TProps) => {
+  const setSelectedCategory = useTodoStore(
+    (state) => state.setSelectedCategory
+  );
+  const setEditingCategoryId = useTodoStore(
+    (state) => state.setEditingCategory
+  );
+
+  const { addCategory } = useAddCategory();
 
   const handleAddCategoryButtonClick = async () => {
-    try {
-      await addCategory();
-    } catch (error) {
-      window.alert(error);
-    }
+    addCategory.mutate(
+      { title: '새 카테고리' },
+      {
+        onSuccess: (data) => {
+          refetchCategoryList();
+
+          const response = data.json();
+          const category = response;
+
+          setSelectedCategory({
+            id: category.id,
+            title: category.title,
+          });
+
+          setEditingCategoryId(category.id);
+        },
+      }
+    );
   };
 
   return (

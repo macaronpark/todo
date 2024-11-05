@@ -1,22 +1,17 @@
 import { CloseTaskDetailButton } from '@features/task/close-task-detail';
 import { DeleteTaskButton } from '@features/task/delete-task';
 
-import { TTask } from '@entities/task';
-
 import { formatDateString } from '@shared/date';
 
 import styles from './task-detail.module.scss';
+import { useTodoStore } from '@shared/store';
 
-type TProps = Omit<TTask, 'categoryId'>;
+const TaskDetail = () => {
+  const selectedTask = useTodoStore((state) => state.selectedTask);
+  if (!selectedTask) return null;
 
-const TaskDetail = ({
-  id,
-  title,
-  createdAt,
-  expiredAt,
-  isCompleted,
-  memo,
-}: TProps) => {
+  const { id, title, memo, createdAt, expiredAt, isCompleted } = selectedTask;
+
   return (
     <div className={styles.TaskDetail}>
       <div className={styles.toolbar}>

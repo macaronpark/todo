@@ -1,27 +1,18 @@
 import { useEffect } from 'react';
 
-import { Task, TTask, useTaskContext } from '@entities/task';
+import { Task, useTaskContext } from '@entities/task';
+
+import { useTodoStore } from '@shared/store';
 
 import useTaskListShow from './task-list.hook';
 import styles from './task-list.module.scss';
 
-type TProps = {
-  categoryId?: number;
-};
+const TaskList = () => {
+  const categoryId = useTodoStore((state) => state.selectedCategory?.id);
+  const setSelectedTask = useTodoStore((state) => state.setSelectedTask);
 
-const TaskList = ({ categoryId }: TProps) => {
+  const { taskList } = useTaskContext();
   const { getTaskList } = useTaskListShow();
-  const { taskList, setSelectedTask } = useTaskContext();
-
-  const handleTaskClick = (task: TTask) => {
-    setSelectedTask((prevTask) => {
-      if (prevTask?.id === task.id) {
-        return undefined;
-      }
-
-      return task;
-    });
-  };
 
   useEffect(() => {
     if (!categoryId) return;
@@ -34,7 +25,7 @@ const TaskList = ({ categoryId }: TProps) => {
         <Task
           key={task.id}
           title={task.title}
-          onClick={() => handleTaskClick(task)}
+          onClick={() => setSelectedTask(task)}
         />
       ))}
     </div>

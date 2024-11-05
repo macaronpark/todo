@@ -5,9 +5,13 @@ import {
   updateCategoryToDB,
   useCategoryContext,
 } from '@entities/category';
+import { useTodoStore } from '@shared/store';
 
 export const useUpdateCategory = () => {
-  const { setCategoryList, setSelectedCategory } = useCategoryContext();
+  const { setCategoryList } = useCategoryContext();
+  const setSelectedCategory = useTodoStore(
+    (state) => state.setSelectedCategory
+  );
 
   const updateCategory = async ({
     newCategory,

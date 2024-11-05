@@ -1,7 +1,10 @@
 import { deleteTaskFromDB, useTaskContext } from '@entities/task';
 
+import { useTodoStore } from '@shared/store';
+
 export const useDeleteTask = () => {
-  const { setTaskList, setSelectedTask } = useTaskContext();
+  const { setTaskList } = useTaskContext();
+  const setSelectedTask = useTodoStore((state) => state.setSelectedTask);
 
   const deleteTask = async (taskId: number) => {
     try {
@@ -18,7 +21,7 @@ export const useDeleteTask = () => {
 
   const handleSuccess = (taskId: number) => {
     setTaskList((prev) => prev.filter((category) => category.id !== taskId));
-    setSelectedTask(undefined);
+    setSelectedTask(null);
   };
 
   return { deleteTask };

@@ -1,40 +1,21 @@
-import {
-  addCategoryToDB,
-  TCategory,
-  useCategoryContext,
-} from '@entities/category';
-import { useCallback } from 'react';
+import { TNewCatergory } from '@entities/category';
+import { useMutation } from '@tanstack/react-query';
 
-const useCategoryAdd = () => {
-  const { setCategoryList, setSelectedCategory, setEditingCategoryId } =
-    useCategoryContext();
+export const useAddCategory = () => {
+  const addCategory = useMutation({
+    mutationKey: ['addCategory'],
+    mutationFn: async (newCategory: TNewCatergory) => {
+      const response = await fetch('http://localhost:3000/categories', {
+        method: 'POST',
+        body: JSON.stringify(newCategory),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-  const addCategory = async () => {
-    try {
-      const newCategory = { title: '새 카테고리' };
-
-      const category = await addCategoryToDB(newCategory);
-      handleSuccess(category);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(`❌ 새 카테고리를 만들 수 없습니다.: ${error.message}`);
-      }
-
-      throw new Error('❌ 알 수 없는 에러가 발생했습니다.');
-    }
-  };
-
-  const handleSuccess = useCallback((category: TCategory) => {
-    setCategoryList((prev) => [...prev, category]);
-    setSelectedCategory({
-      id: category.id,
-      title: category.title,
-    });
-
-    setEditingCategoryId(category.id);
-  }, []);
+      return response.json();
+    },
+  });
 
   return { addCategory };
 };
-
-export default useCategoryAdd;

@@ -1,8 +1,12 @@
 import { deleteCategoryFromDB, useCategoryContext } from '@entities/category';
 
+import { useTodoStore } from '@shared/store';
+
 export const useDeleteCategory = () => {
-  const { categoryList, setCategoryList, setSelectedCategory } =
-    useCategoryContext();
+  const { categoryList, setCategoryList } = useCategoryContext();
+  const setSelectedCategory = useTodoStore(
+    (state) => state.setSelectedCategory
+  );
 
   const deleteCategory = async (categoryId: number) => {
     if (!categoryId) return;

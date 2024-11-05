@@ -30,7 +30,7 @@ const MainPage = () => {
   return (
     <div className={styles.MainPage}>
       <Sidebar>
-        <CategoryList />
+        <AddCategoryButton refetchCategoryList={refetchCategoryList} />
       </Sidebar>
       <div className={styles.taskWrapper}>
         <TaskSection

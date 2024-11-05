@@ -3,10 +3,12 @@ import { useCallback } from 'react';
 import { UpdateCategoryInput } from '@features/category/update-category';
 import { CategoryTaskCount } from '@features/category/show-category-task-count';
 
-import { Category, useCategoryContext } from '@entities/category';
+import { Category } from '@entities/category';
+
+import { TEST_ID } from '@shared/test';
+import { useTodoStore } from '@shared/store';
 
 import styles from './category-list-item.module.scss';
-import { TEST_ID } from '@shared/test';
 
 type TProps = {
   id: number;
@@ -16,15 +18,16 @@ type TProps = {
 };
 
 const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
-  const { editingCategoryId, setEditingCategoryId } = useCategoryContext();
-  const isEditing = editingCategoryId === id;
+  const editingCategory = useTodoStore((state) => state.editingCategory);
+  const setEditingCategory = useTodoStore((state) => state.setEditingCategory);
+  const isEditing = editingCategory?.id === id;
 
   const handleStartEditing = useCallback(() => {
-    setEditingCategoryId(id);
-  }, [id]);
+    setEditingCategory({ id, title });
+  }, [id, title]);
 
   const handleEndEditing = useCallback(() => {
-    setEditingCategoryId(null);
+    setEditingCategory(null);
   }, []);
 
   return (
