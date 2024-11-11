@@ -5,7 +5,7 @@ import { useDeleteCategory } from './delete-category.hook';
 import styles from './delete-category.module.scss';
 
 type TProps = {
-  categoryId: number;
+  categoryId: string;
   categoryTitle?: string;
 };
 
@@ -15,12 +15,9 @@ export const DeleteCategoryButton = ({ categoryId, categoryTitle }: TProps) => {
   const handleCategoryDeleteButtonClick = () => {
     if (!categoryId) return;
 
-    if (
-      window.confirm(
-        `🚨 '${categoryTitle}'와 모든 태스크를 영구적으로 삭제합니다.`
-      )
-    ) {
-      deleteCategory(categoryId);
+    const message = `🚨 '${categoryTitle}'와 모든 태스크를 영구적으로 삭제합니다.`;
+    if (window.confirm(message)) {
+      deleteCategory.mutate(categoryId);
     }
   };
 

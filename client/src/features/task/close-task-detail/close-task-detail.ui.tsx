@@ -1,11 +1,11 @@
 import { XMarkIcon } from '@heroicons/react/20/solid';
 
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import styles from './close-task-detail.module.scss';
 
 export const CloseTaskDetailButton = () => {
-  const setSelectedTask = useTodoStore((state) => state.setSelectedTask);
+  const setSelectedTask = useStore((state) => state.setSelectedTask);
 
   return (
     <button

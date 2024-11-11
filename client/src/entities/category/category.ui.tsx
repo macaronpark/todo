@@ -12,7 +12,8 @@ const Category = ({ id, title, onClick }: TProps) => {
   return (
     <button className={styles.Category} onClick={onClick}>
       <Bars3Icon className={styles.icon} />
-      <span>{`${title}(#${id})`}</span>
+      <span>{title}</span>
+      <span>{`(#${id})`}</span>
     </button>
   );
 };

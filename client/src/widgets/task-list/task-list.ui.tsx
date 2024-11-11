@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 
 import { Task, useTaskContext } from '@entities/task';
 
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import useTaskListShow from './task-list.hook';
 import styles from './task-list.module.scss';
 
 const TaskList = () => {
-  const categoryId = useTodoStore((state) => state.selectedCategory?.id);
-  const setSelectedTask = useTodoStore((state) => state.setSelectedTask);
+  const categoryId = useStore((state) => state.selectedCategory?.id);
+  const setSelectedTask = useStore((state) => state.setSelectedTask);
 
   const { taskList } = useTaskContext();
   const { getTaskList } = useTaskListShow();

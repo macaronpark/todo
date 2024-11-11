@@ -2,14 +2,14 @@ import { AddTaskInputBar } from '@features/task/add-task';
 
 import { NoCategory } from './no-category';
 import styles from './task-section.module.scss';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 type TProps = {
   children: React.ReactNode;
 };
 
 const TaskSection = ({ children }: TProps) => {
-  const selectedCategory = useTodoStore((state) => state.selectedCategory);
+  const selectedCategory = useStore((state) => state.selectedCategory);
 
   if (!selectedCategory) {
     return (

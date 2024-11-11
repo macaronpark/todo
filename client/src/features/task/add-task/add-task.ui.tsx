@@ -1,13 +1,13 @@
 import { PlusIcon } from '@heroicons/react/20/solid';
 
 import { TEST_ID } from '@shared/test';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import { useAddTask } from './add-task.hook';
 import styles from './add-task.module.scss';
 
 export const AddTaskInputBar = () => {
-  const selectedCategory = useTodoStore((state) => state.selectedCategory);
+  const selectedCategory = useStore((state) => state.selectedCategory);
 
   const { addTask } = useAddTask();
 

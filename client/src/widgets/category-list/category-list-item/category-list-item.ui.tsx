@@ -6,7 +6,7 @@ import { CategoryTaskCount } from '@features/category/show-category-task-count';
 import { Category } from '@entities/category';
 
 import { TEST_ID } from '@shared/test';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import styles from './category-list-item.module.scss';
 
@@ -18,8 +18,9 @@ type TProps = {
 };
 
 const CategoryListItem = ({ id, title, isSelected, onClick }: TProps) => {
-  const editingCategory = useTodoStore((state) => state.editingCategory);
-  const setEditingCategory = useTodoStore((state) => state.setEditingCategory);
+  const editingCategory = useStore((state) => state.editingCategory);
+  const setEditingCategory = useStore((state) => state.setEditingCategory);
+
   const isEditing = editingCategory?.id === id;
 
   const handleStartEditing = useCallback(() => {

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { TCategory } from '@entities/category';
 
 import { TEST_ID } from '@shared/test';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import { CategoryListItem } from './category-list-item';
 import styles from './category-list.module.scss';
@@ -13,10 +13,8 @@ type TProps = {
 };
 
 const CategoryList = ({ categoryList }: TProps) => {
-  const selectedCategory = useTodoStore((state) => state.selectedCategory);
-  const setSelectedCategory = useTodoStore(
-    (state) => state.setSelectedCategory
-  );
+  const selectedCategory = useStore((state) => state.selectedCategory);
+  const setSelectedCategory = useStore((state) => state.setSelectedCategory);
 
   useEffect(() => {
     if (categoryList.length > 0) {

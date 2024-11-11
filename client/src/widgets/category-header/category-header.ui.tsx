@@ -4,7 +4,7 @@ import { UpdateCategoryInput } from '@features/category/update-category';
 import { DeleteCategoryButton } from '@features/category/delete-category';
 
 import { TEST_ID } from '@shared/test';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 import styles from './category-header.module.scss';
 
@@ -13,7 +13,7 @@ const CategoryHeader = () => {
   const handleStartEditing = useCallback(() => setIsEditing(true), []);
   const handleEndEditing = useCallback(() => setIsEditing(false), []);
 
-  const selectedCategory = useTodoStore((state) => state.selectedCategory);
+  const selectedCategory = useStore((state) => state.selectedCategory);
   if (!selectedCategory) return null;
 
   return (

@@ -4,10 +4,10 @@ import { DeleteTaskButton } from '@features/task/delete-task';
 import { formatDateString } from '@shared/date';
 
 import styles from './task-detail.module.scss';
-import { useTodoStore } from '@shared/store';
+import { useStore } from '@shared/store';
 
 const TaskDetail = () => {
-  const selectedTask = useTodoStore((state) => state.selectedTask);
+  const selectedTask = useStore((state) => state.selectedTask);
   if (!selectedTask) return null;
 
   const { id, title, memo, createdAt, expiredAt, isCompleted } = selectedTask;

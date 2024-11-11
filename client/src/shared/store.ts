@@ -12,7 +12,7 @@ type TTodoState = {
   setSelectedTask: (task: TTask | null) => void;
 };
 
-export const useTodoStore = create<TTodoState>()((set) => ({
+export const useStore = create<TTodoState>()((set) => ({
   selectedCategory: null,
   editingCategory: null,
   selectedTask: null,
