@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "playwright": "npx playwright test"
+    "e2e": "npx playwright test"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
