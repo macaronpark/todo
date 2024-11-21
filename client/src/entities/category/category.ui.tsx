@@ -3,7 +3,7 @@ import { Bars3Icon } from '@heroicons/react/20/solid';
 import styles from './category.module.scss';
 
 type TProps = {
-  id: number;
+  id: string;
   title: string;
   onClick: () => void;
 };

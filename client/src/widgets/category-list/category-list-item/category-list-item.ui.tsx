@@ -11,7 +11,7 @@ import { useStore } from '@shared/store';
 import styles from './category-list-item.module.scss';
 
 type TProps = {
-  id: number;
+  id: string;
   title: string;
   isSelected: boolean;
   onClick: () => void;

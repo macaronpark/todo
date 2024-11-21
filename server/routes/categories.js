@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
 
   const category = {
     title: newCategory.title,
-    id: `${categoryList.length + 1}`,
+    id: `${(Number(categoryList[categoryList.length - 1]?.id) ?? -1) + 1}`,
   };
 
   categoryList.push(category);
@@ -43,13 +43,13 @@ router.put('/:categoryId', function (req, res, next) {
     return;
   }
 
-  const newCategoryTitle = req.body.title;
-  categoryList[categoryList.indexOf(category)] = newCategoryTitle;
-
-  res.status(200).json({
+  const newCategory = {
     id: categoryId,
-    title: newCategoryTitle,
-  });
+    title: req.body.title,
+  };
+
+  categoryList[categoryList.indexOf(category)] = newCategory;
+  res.status(200).json(newCategory);
 });
 
 router.delete('/:categoryId', function (req, res) {

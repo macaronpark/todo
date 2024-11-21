@@ -1,5 +1,3 @@
-import { useCallback } from 'react';
-
 import { TCategory } from '@entities/category';
 import { useStore } from '@shared/store';
 import { QUERY_KEY, queryClient } from '@shared/react-query';
@@ -15,8 +13,14 @@ export const useUpdateCategory = () => {
   const updateCategory = useMutation({
     mutationKey: ['updateCategory'],
     mutationFn: updateCategoryAPI,
-    onSuccess: (data: TCategory) => {
-      handleSuccess(data);
+    onSuccess: (newCategory: TCategory) => {
+      const newList = categoryList.map((category) =>
+        category.id === newCategory.id ? newCategory : category
+      );
+
+      queryClient.setQueryData(QUERY_KEY.categoryList, newList);
+
+      setSelectedCategory(newCategory);
     },
     onError: (error: Error) => {
       if (error instanceof Error) {
@@ -26,16 +30,6 @@ export const useUpdateCategory = () => {
       throw new Error('❌ 알 수 없는 에러가 발생했습니다.');
     },
   });
-
-  const handleSuccess = useCallback((newCategory: TCategory) => {
-    const newList = categoryList.map((category) =>
-      category.id === newCategory.id ? newCategory : category
-    );
-
-    queryClient.setQueryData(QUERY_KEY.categoryList, newList);
-
-    setSelectedCategory(newCategory);
-  }, []);
 
   return {
     updateCategory,

@@ -22,7 +22,7 @@ export const AddCategoryButton = ({ className }: TProps) => {
 
   const { addCategory } = useAddCategory();
 
-  const handleAddCategoryButtonClick = async () => {
+  const handleAddCategoryButtonClick = () => {
     addCategory.mutate(
       { title: '새 카테고리' },
       {

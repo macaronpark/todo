@@ -6,7 +6,7 @@ import styles from './show-category-task-count.module.scss';
 import { TEST_ID } from '@shared/test';
 
 type TProps = {
-  categoryId: number;
+  categoryId: string;
   isSelected: boolean;
 };
 
