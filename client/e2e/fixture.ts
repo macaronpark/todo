@@ -33,17 +33,11 @@ export class MainPage {
   async addCategory({ title }: { title: string }): Promise<Locator> {
     await this.categoryAddButton.click();
 
-    const categoryInput = this.page
-      .getByTestId(TEST_ID.category.listItem)
-      .nth(-1)
-      .locator('input');
+    const category = this.page.getByTestId(TEST_ID.category.listItem).nth(-1);
+    const categoryInput = category.locator('input');
 
     await categoryInput.fill(title);
     await categoryInput.press('Enter');
-
-    const category = this.page
-      .getByTestId(TEST_ID.category.listItem)
-      .filter({ hasText: title });
 
     return category;
   }
