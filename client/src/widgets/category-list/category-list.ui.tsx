@@ -17,10 +17,10 @@ const CategoryList = ({ categoryList }: TProps) => {
   const setSelectedCategory = useStore((state) => state.setSelectedCategory);
 
   useEffect(() => {
-    if (categoryList.length > 0) {
-      setSelectedCategory(categoryList[0]);
+    if (categoryList.length > 0 && !selectedCategory) {
+      setSelectedCategory(categoryList[categoryList.length - 1]);
     }
-  }, [categoryList]);
+  }, [categoryList, selectedCategory]);
 
   return (
     <ol className={styles.CategoryList} data-testid={TEST_ID.category.list}>
