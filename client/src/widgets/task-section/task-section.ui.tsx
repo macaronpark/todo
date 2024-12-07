@@ -2,19 +2,16 @@ import { AddTaskInputBar } from '@features/task/add-task';
 
 import { NoCategory } from './no-category';
 import styles from './task-section.module.scss';
+import { useStore } from '@shared/store';
 
 type TProps = {
-  selectedCategoryId?: number;
-  selectedCategoryTitle?: string;
   children: React.ReactNode;
 };
 
-const TaskSection = ({
-  selectedCategoryId,
-  selectedCategoryTitle,
-  children,
-}: TProps) => {
-  if (!selectedCategoryId || !selectedCategoryTitle) {
+const TaskSection = ({ children }: TProps) => {
+  const selectedCategory = useStore((state) => state.selectedCategory);
+
+  if (!selectedCategory) {
     return (
       <div className={styles.TaskSection}>
         <NoCategory />

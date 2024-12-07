@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const categoryList = [
-  { id: '1', name: '카테고리1' },
-  { id: '2', name: '카테고리2' },
+  { id: '1', title: '카테고리1' },
+  { id: '2', title: '카테고리2' },
 ];
 
 router.get('/', function (req, res, next) {
@@ -24,8 +24,14 @@ router.get('/:categoryId', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   const newCategory = req.body;
-  categoryList.push(newCategory);
-  res.status(201).json(newCategory);
+
+  const category = {
+    title: newCategory.title,
+    id: `${(Number(categoryList[categoryList.length - 1]?.id) ?? -1) + 1}`,
+  };
+
+  categoryList.push(category);
+  res.status(200).json(category);
 });
 
 router.put('/:categoryId', function (req, res, next) {
@@ -37,13 +43,16 @@ router.put('/:categoryId', function (req, res, next) {
     return;
   }
 
-  const updatedCategory = req.body;
-  categoryList[categoryList.indexOf(category)] = updatedCategory;
+  const newCategory = {
+    id: categoryId,
+    title: req.body.title,
+  };
 
-  res.json(updatedCategory);
+  categoryList[categoryList.indexOf(category)] = newCategory;
+  res.status(200).json(newCategory);
 });
 
-router.delete('/:categoryId', function (req, res, next) {
+router.delete('/:categoryId', function (req, res) {
   const categoryId = req.params.categoryId;
   const category = categoryList.find((category) => category.id === categoryId);
 
@@ -53,8 +62,7 @@ router.delete('/:categoryId', function (req, res, next) {
   }
 
   categoryList.splice(categoryList.indexOf(category), 1);
-
-  res.json(category);
+  res.status(200).json({ id: category.id });
 });
 
 module.exports = router;

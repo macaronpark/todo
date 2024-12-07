@@ -4,10 +4,9 @@ import { TEST_ID } from '@shared/test';
 
 import styles from './update-category.module.scss';
 import { useUpdateCategory } from './update-category.hook';
+import { TCategory } from '@entities/category';
 
-type TProps = {
-  id: number;
-  title: string;
+type TProps = TCategory & {
   onEndEditing: () => void;
 };
 
@@ -15,7 +14,6 @@ export const UpdateCategoryInput = ({ id, title, onEndEditing }: TProps) => {
   const [newTitle, setNewTitle] = useState(title);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-
   const handleInputRef = useCallback((input: HTMLInputElement) => {
     if (!input) return;
 
@@ -38,15 +36,12 @@ export const UpdateCategoryInput = ({ id, title, onEndEditing }: TProps) => {
     }
 
     const newCategory = { title: newTitle, id };
-    await updateCategory({
-      newCategory,
+    updateCategory.mutate(newCategory, {
       onError: (error: Error) => {
         setNewTitle(title);
         window.alert(`❌ 카테고리 수정에 실패했습니다.: ${error.message}`);
       },
-      onFinally: () => {
-        onEndEditing();
-      },
+      onSettled: onEndEditing,
     });
   };
 

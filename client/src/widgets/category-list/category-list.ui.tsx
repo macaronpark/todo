@@ -1,26 +1,30 @@
 import { useEffect } from 'react';
 
+import { TCategory } from '@entities/category';
+
 import { TEST_ID } from '@shared/test';
+import { useStore } from '@shared/store';
 
 import { CategoryListItem } from './category-list-item';
-import useCategoryListShow from './category-list.hook';
 import styles from './category-list.module.scss';
 
-const CategoryList = () => {
-  const {
-    categoryList,
-    selectedCategory,
-    setSelectedCategory,
-    getCategoryList,
-  } = useCategoryListShow();
+type TProps = {
+  categoryList: TCategory[];
+};
+
+const CategoryList = ({ categoryList }: TProps) => {
+  const selectedCategory = useStore((state) => state.selectedCategory);
+  const setSelectedCategory = useStore((state) => state.setSelectedCategory);
 
   useEffect(() => {
-    getCategoryList();
-  }, []);
+    if (categoryList.length > 0 && !selectedCategory) {
+      setSelectedCategory(categoryList[categoryList.length - 1]);
+    }
+  }, [categoryList, selectedCategory]);
 
   return (
     <ol className={styles.CategoryList} data-testid={TEST_ID.category.list}>
-      {categoryList.map((category) => (
+      {categoryList?.map((category) => (
         <CategoryListItem
           key={category.id}
           id={category.id}
