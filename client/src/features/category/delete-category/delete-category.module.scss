@@ -1,17 +1,19 @@
+@use 'sass:color';
+
 .DeleteCategoryButton {
-  @include flex;
+  @include mixins.flex;
   font-size: 14px;
   font-weight: 600;
   padding: 4px;
   border-radius: 8px;
 
   &:hover {
-    background-color: #00000020;
+    background-color: color.change(colors.$black, $alpha: 0.1);
   }
 
   .icon {
     width: 20px;
     min-width: 20px;
-    color: $white;
+    color: colors.$white;
   }
 }

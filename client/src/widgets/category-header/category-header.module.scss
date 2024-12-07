@@ -1,10 +1,12 @@
+@use 'sass:color';
+
 $fontSize: 24px;
 $fontWeight: 600;
 $minHeight: 40px;
 $padding: 2px 4px;
 
 .CategoryHeader {
-  @include flex(space-between, center);
+  @include mixins.flex(space-between, center);
   padding: 40px 40px 0;
   gap: 40px;
 
@@ -16,10 +18,10 @@ $padding: 2px 4px;
     border-radius: 8px;
     font-size: $fontSize;
     font-weight: $fontWeight;
-    color: $white;
+    color: colors.$white;
 
     &:hover {
-      background-color: #00000020;
+      background-color: color.change(colors.$black, $alpha: 0.1);
     }
   }
 
