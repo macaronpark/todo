@@ -1,12 +1,12 @@
 $inputHeight: 48px;
 
 .TaskAddInputBar {
-  @include flex();
+  @include mixins.flex();
   padding: 8px 40px 40px;
-  background-color: $purple;
+  background-color: colors.$purple;
 
   .inputWrapper {
-    @include flex(start, center);
+    @include mixins.flex(start, center);
     width: 100%;
     height: $inputHeight;
     background-color: #ffffff;

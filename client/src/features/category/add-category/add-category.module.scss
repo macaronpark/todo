@@ -1,14 +1,14 @@
 .AddCategoryButton {
-  @include flex(flex-start, center);
+  @include mixins.flex(flex-start, center);
   gap: 4px;
   width: calc(100% - 20px);
   border-radius: 8px;
-  background-color: $white;
+  background-color: colors.$white;
   padding: 8px;
   margin-bottom: 8px;
 
   &:hover {
-    background-color: $lightgray;
+    background-color: colors.$lightgray;
   }
 
   .icon {

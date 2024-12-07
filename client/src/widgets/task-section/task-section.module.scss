@@ -1,6 +1,6 @@
 .TaskSection {
-  @include flex(start, stretch, column);
+  @include mixins.flex(start, stretch, column);
   flex: 1;
-  background-color: $purple;
+  background-color: colors.$purple;
   border-top-left-radius: 10px;
 }

@@ -1,14 +1,14 @@
 .TaskDetailCloseButton {
-  @include flex;
+  @include mixins.flex;
   padding: 4px;
   border-radius: 8px;
 
   &:hover {
-    background-color: $lightgray;
+    background-color: colors.$lightgray;
   }
 
   .icon {
     width: 20px;
-    color: $gray;
+    color: colors.$gray;
   }
 }

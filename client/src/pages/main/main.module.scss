@@ -3,7 +3,7 @@
   height: 100vh;
 
   .taskWrapper {
-    @include flex(start, stretch);
+    @include mixins.flex(start, stretch);
     flex-grow: 1;
   }
 }

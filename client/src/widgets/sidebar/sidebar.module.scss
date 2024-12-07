@@ -1,6 +1,6 @@
 .Sidebar {
-  @include flex(space-between, center, column);
+  @include mixins.flex(space-between, center, column);
   width: 240px;
   min-width: 240px;
-  background-color: $white;
+  background-color: colors.$white;
 }
