@@ -3,13 +3,13 @@
 학습을 위한 토이 프로젝트 `2024-08-29~`
 
 - 목표
-  - ⬜ 투두리스트 앱 완성
-    - 레퍼런스: [Microsoft To Do](https://www.microsoft.com/ko-kr/microsoft-365/microsoft-to-do-list-app)
+  - ⬜ 투두리스트 앱 완성 (레퍼런스: [Microsoft To Do](https://www.microsoft.com/ko-kr/microsoft-365/microsoft-to-do-list-app))
     - 개발 체크리스트: [/devlog/00.checklist.md](/devlog/00.checklist.md)
     - 개발 히스토리: [macaronpark/todo/pulls](https://github.com/macaronpark/todo/pulls)
-  - ⬜ [Feature-Sliced Design](https://feature-sliced.design/) 학습과 적용
-  - ⬜ [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 학습과 적용
+  - ✅ [Feature-Sliced Design](https://feature-sliced.design/) 학습과 적용
   - ⬜ Node.js, Express 학습과 적용
+  - ⬜ Playwright 학습과 적용
+  - ⬜ Storybook 학습과 적용
 
 <br />
 
